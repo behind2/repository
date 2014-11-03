@@ -1,0 +1,84 @@
+﻿@charset "utf-8";/*reset*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,form,fieldset,input,textarea,p,table,th,td{margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;background:#fff;}
+body{min-width:1000px;width:100%;font:12px/18px "Microsoft YaHei",Arial,Helvetica,sans-serif;background:#fff url(http://y2.ifengimg.com/0f56ee67a4c375c2/2014/0401/HeiYouBg_01.jpg) no-repeat center top;}
+input,select,button,textarea{vertical-align:middle;font-size:12px;outline:none}
+ol,ul{list-style:none}img{border:0}em{font-style:normal}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}
+table{border-collapse:collapse;border-spacing:0}
+textarea{resize:none}
+a{outline:none;text-decoration:none;color:#000}
+a{blr:expression(this.onFocus=this.blur())};
+a:hover{text-decoration:none;color:#000}
+.minibox{min-width:1000px;overflow:hidden}
+.videocomment{overflow:hidden}
+.none{display:none}
+.clearfix{*zoom:1}
+.clearfix:after{content:" ";overflow:hidden;clear:both;display:block;height:0}
+
+/*标题*/
+.title{width:975px;height:38px;line-height:38px;padding-left:25px;border-top:1px solid #ccc;border-bottom:1px solid #ccc;} 
+.title h2{width:200px;float:left;padding-left:10px;_padding-top:1px;color:#333;font:bold 20px/38px "Microsoft YaHei";}
+.title .more{padding-right:15px;font:normal 12px/38px "Arial";color:#888;float:right;}
+.forward{text-align:center;}
+
+/*背景*/
+.title h2,.vplayMod .focusbar #scrnBtnL,.vplayMod .focusbar #scrnBtnR{background:url(http://y2.ifengimg.com/0f56ee67a4c375c2/2014/0401/sprites.png) no-repeat;}
+.title h2{background-position:-54px 12px;}
+.vplayMod .focusbar #scrnBtnL{background-position:0 0;}
+.vplayMod .focusbar #scrnBtnR{background-position:-30px 0;}
+
+/*banner*/
+.banner{width:1000px;margin:0 auto;overflow:hidden;height:146px;}
+.bannerInner{width:588px;margin:20px 0 0 175px;padding-top:15px;}
+.bannerInner .toptit{overflow:hidden;color:#fff;}
+.toptit p{width:508px;height:30px;font:normal 18px/30px "Microsoft YaHei";overflow:hidden;}
+.toptit h2{height:65px;font:bold 31px/32px "Microsoft YaHei";color:#fff;overflow:hidden;} 
+
+/*视频播放器*/
+.vplayMod{width:1000px;margin:0 auto 30px;overflow:hidden;zoom:1;}
+.playerBox{width:853px;height:500px;margin:0 auto 30px;overflow:hidden;}
+.vplayMod .focusbar{width:1000px;overflow:hidden;position:relative}
+.focusbar_list{width:860px;margin:0 auto;position:relative;overflow:hidden;}
+.vplayMod .focusbar #scrnBtnL{position:absolute;top:30px;left:25px;display:block;width:21px;height:38px;overflow:hidden;}
+.vplayMod .focusbar #scrnBtnR{position:absolute;top:30px;right:25px;display:block;width:21px;height:38px;overflow:hidden;}
+.vplayMod .focusbar .scrnTabBox{width:10000px;position:relative;}
+.vplayMod .focusbar .scrnTabBox ul{float:left;margin:0;padding:0;overflow:hidden;zoom:1;}
+.vplayMod .focusbar .scrnTabBox ul li{float:left;width:128px;margin-right:18px;display:inline;position:relative;}
+.vplayMod .focusbar .scrnTabBox ul li img{width:128px;height:96px;display:block;}
+.vplayMod .focusbar .scrnTabBox ul li a .txt_title{cursor:pointer;display:block;width:100%;height:100%;position:absolute;top:68px;left:0px;height:28px;line-height:28px;overflow:hidden;text-align:center;color:#fff;}
+.vplayMod .focusbar .scrnTabBox ul li a .txt_shadow{display:block;width:100%;height:100%;position:absolute;top:68px;left:0px;height:28px;overflow:hidden;filter:alpha(opacity=50);-moz-opacity:0.5;opacity:0.5;background:#000;}
+.vplayMod .focusbar .scrnTabBox ul li p{width:128px;margin-top:6px;height:38px;line-height:18px;font-size:12px;overflow:hidden;word-wrap:break-word;}
+.vplayMod .focusbar .scrnTabBox ul li a{color:#333;text-decoration:none;}
+.vplayMod .focusbar .scrnTabBox ul li p a:hover{text-decoration:underline;}
+
+/*精彩片段*/
+.column{width:1000px;margin:20px auto 0;overflow:hidden;}
+.column ul{width:1000px;overflow:hidden;zoom:1;padding:20px 25px 0;}
+.column ul li{position:relative;display:inline;float:left;width:220px;margin-right:24px;padding-bottom:20px;}
+.column ul li a,.column ul li a:hover{display:block;width:220px;overflow:hidden;text-decoration:none;}
+.column ul li img{display:block;width:220px;height:164px;overflow:hidden;}
+.column ul li .txt_title{cursor:pointer;display:block;width:100%;height:100%;position:absolute;top:136px;left:0px;height:28px;line-height:28px;overflow:hidden;text-align:center;color:#fff;}
+.column ul li .txt_shadow{display:block;width:100%;height:100%;position:absolute;top:136px;left:0px;height:28px;overflow:hidden;filter:alpha(opacity=50);-moz-opacity:0.5;opacity:0.5;background:#000;}
+.column ul li p{margin-top:6px;height:38px;line-height:18px;font-size:14px;overflow:hidden;word-wrap:break-word;}
+.column ul li p a,.column ul li p a:hover{color:#333;}
+.column ul li p a:hover{text-decoration:underline;}
+
+/*返回顶部与二维码*/
+.w_code{position:fixed;bottom:100px;left:50%;margin-left:510px;width:68px;border:1px solid #ccc;padding:2px;background:#fff;font-family:"Microsoft YaHei","SimSun",Arial;_position:absolute;_bottom:auto;_top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-10-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)))}
+.codeimg{display:block;width:68px;height:68px;}
+.w_code p{line-height:13px;text-align:center;font-size:12px;color:#333;padding:3px 0;font-family:"黑体"}
+html{_background-image:url(about:blank);_background-attachment:fixed} 
+
+/*留言板*/
+.comment_box{width:1000px;margin:18px auto 0;overflow:hidden;}
+#videocomment{border:1px solid #ccc;}
+.speFooter{padding:20px 0} 
+
+/*翻页*/
+.page{text-align:center;font-size:14px;color:#004b99;font-family:"Microsoft YaHei","SimSun",Arial;}
+.page a{height:22px;line-height:22px;padding:0 8px;display:inline-block;cursor:pointer;color:#004b99;}
+.page em{line-height:22px;display:inline-block;padding:0 8px}
+.page span.current,.page a.current{height:22px;display:inline-block;line-height:22px;padding:0 7px;margin:0 3px;color:#b81600; border:1px solid #b81600}
+
+
