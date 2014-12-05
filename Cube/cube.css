@@ -1,22 +1,23 @@
 #container {
-	-webkit-perspective: 800px;
-	-moz-perspective: 800px;
-	-ms-perspective: 800px;
-	-o-perspective: 800px;
-	perspective: 800px;
+	-webkit-perspective: 2000px;
+	-moz-perspective: 2000px;
+	-ms-perspective: 2000px;
+	-o-perspective: 2000px;
+	perspective: 2000px;
 
-	-webkit-perspective-origin: 50% 50px;
-	-moz-perspective-origin: 50% 50px;
-	-ms-perspective-origin: 50% 50px;
-	-o-perspective-origin: 50% 50px;
-	perspective-origin: 50% 50px;
+	-webkit-perspective-origin: 50% 300px;
+	-moz-perspective-origin: 50% 300px;
+	-ms-perspective-origin: 50% 300px;
+	-o-perspective-origin: 50% 300px;
+	perspective-origin: 50% 300px;
 }
 
 #cube {
-	width: 400px;
-	height: 400px;
+	width: 600px;
+	height: 600px;
 	margin: 100px auto;
 	position: relative; 
+	top: 50px;
 
 	-webkit-transition: transform 2s linear;
 	-moz-transition: transform 2s linear;
@@ -33,8 +34,8 @@
 
 .face {
 	position: absolute;
-	width: 360px;
-	height: 360px;
+	width: 560px;
+	height: 560px;
 	padding: 20px;
 	background-color: rgba(50, 50, 50, 0.7);
 	font-size: 27px;
@@ -45,49 +46,49 @@
 }
 
 #cube .one {
-	-webkit-transform: rotateX(90deg) translateZ(200px);
-	-moz-transform: rotateX(90deg) translateZ(200px);
-	-ms-transform: rotateX(90deg) translateZ(200px);
-	-o-transform: rotateX(90deg) translateZ(200px);
-	transform: rotateX(90deg) translateZ(200px);
+	-webkit-transform: rotateX(90deg) translateZ(300px);
+	-moz-transform: rotateX(90deg) translateZ(300px);
+	-ms-transform: rotateX(90deg) translateZ(300px);
+	-o-transform: rotateX(90deg) translateZ(300px);
+	transform: rotateX(90deg) translateZ(300px);
 }
 
 #cube .two {
-	-webkit-transform: translateZ(200px);
-	-moz-transform: translateZ(200px);
-	-ms-transform: translateZ(200px);
-	-o-transform: translateZ(200px);
-	transform: translateZ(200px);
+	-webkit-transform: translateZ(300px);
+	-moz-transform: translateZ(300px);
+	-ms-transform: translateZ(300px);
+	-o-transform: translateZ(300px);
+	transform: translateZ(300px);
 }
 
 #cube .three {
-	-webkit-transform: rotateY(90deg) translateZ(200px);
-	-moz-transform: rotateY(90deg) translateZ(200px);
-	-ms-transform: rotateY(90deg) translateZ(200px);
-	-o-transform: rotateY(90deg) translateZ(200px);
-	transform: rotateY(90deg) translateZ(200px);
+	-webkit-transform: rotateY(90deg) translateZ(300px);
+	-moz-transform: rotateY(90deg) translateZ(300px);
+	-ms-transform: rotateY(90deg) translateZ(300px);
+	-o-transform: rotateY(90deg) translateZ(300px);
+	transform: rotateY(90deg) translateZ(300px);
 }
 
 #cube .four {
-	-webkit-transform: rotateY(180deg) translateZ(200px);
-	-moz-transform: rotateY(180deg) translateZ(200px);
-	-ms-transform: rotateY(180deg) translateZ(200px);
-	-o-transform: rotateY(180deg) translateZ(200px);
-	transform: rotateY(180deg) translateZ(200px);
+	-webkit-transform: rotateY(180deg) translateZ(300px);
+	-moz-transform: rotateY(180deg) translateZ(300px);
+	-ms-transform: rotateY(180deg) translateZ(300px);
+	-o-transform: rotateY(180deg) translateZ(300px);
+	transform: rotateY(180deg) translateZ(300px);
 }
 
 #cube .five {
-	-webkit-transform: rotateY(-90deg) translateZ(200px);
-	-moz-transform: rotateY(-90deg) translateZ(200px);
-	-ms-transform: rotateY(-90deg) translateZ(200px);
-	-o-transform: rotateY(-90deg) translateZ(200px);
-	transform: rotateY(-90deg) translateZ(200px);
+	-webkit-transform: rotateY(-90deg) translateZ(300px);
+	-moz-transform: rotateY(-90deg) translateZ(300px);
+	-ms-transform: rotateY(-90deg) translateZ(300px);
+	-o-transform: rotateY(-90deg) translateZ(300px);
+	transform: rotateY(-90deg) translateZ(300px);
 }
 
 #cube .six {
-	-webkit-transform: rotateX(-90deg) translateZ(200px);
-	-moz-transform: rotateX(-90deg) translateZ(200px);
-	-ms-transform: rotateX(-90deg) translateZ(200px);
-	-o-transform: rotateX(-90deg) translateZ(200px);
-	transform: rotateX(-90deg) translateZ(200px);
+	-webkit-transform: rotateX(-90deg) translateZ(300px);
+	-moz-transform: rotateX(-90deg) translateZ(300px);
+	-ms-transform: rotateX(-90deg) translateZ(300px);
+	-o-transform: rotateX(-90deg) translateZ(300px);
+	transform: rotateX(-90deg) translateZ(300px);
 }
