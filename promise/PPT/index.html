@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Deferred</title>
+  <link rel="shortcut icon" href="http://mat1.gtimg.com/www/icon/favicon2.ico"/>
+  <link rel="stylesheet" href="style/index.css">
+ </head>
+ <body>
+
+    <div id='impress'>
+
+        <div class="step tit" data-x="0" data-y="-240" data-rotate-y="25">
+            <p>want to <span>know</span> more <span>Promises/A+?</span></p>
+        </div>
+
+        <div class="step author" data-x="0" data-y="0">
+            <p>behindli(<span>李瀚</span>)</p>
+        </div>
+
+        <div class="step ppt" data-x="1350" data-y="0">
+            <h6>引言</h6>
+            <p class="article left">
+                fn1();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fn1是一个耗时任务, fn2等待fn1的执行结果...
+                <br>
+                fn2();
+            </p>
+            <p></p>
+            <p class="article right">
+                function fn1(callback) {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;同步变异步<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// fn1业务逻辑&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fn1不阻塞程序运行<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setTimeout(function () {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;callback();<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}, 1000);<br>
+                }
+            </p>
+            <p class="article" style="-webkit-transform: translate3d(0, 150px, 0)">
+                eg:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AIO用这种方式增加了容错<br>
+                console.log(1);<br>
+                setTimeout(function () {<br>
+                    console.log(2);<br>
+                }, 0);<br>
+                console.log(3);
+            </p>
+            <img style="-webkit-transform: translate3d(430px,-10px,0)" src="images/step3-1.png" alt="">
+            <p class="article">
+	            优点：容易理解。<br>
+	            缺点：不利于代码的阅读和维护，各个部分耦合度高，使得程序结构混乱、流程难以追踪。<br>
+	            <br><br><br>
+	            为了改善JS异步编程, Promises应运而生...
+            </p>
+        </div>
+
+        <div class="step ppt" data-x="2700" data-y="0">
+        	<h6>Promises</h6>
+        	<p class="article left">
+        		是一种规范，目的是为异步编程提供统一接口。<br>
+        		<br>
+        		异步任务返回一个promise对象，promise有三种状态：未完成<b>（pending）</b>、已完成<b>（fulfilled）</b>、失败<b>（rejected）</b>。<br><br>
+        		状态变化有两种，且只能发生一次。分别是从“未完成”到“已完成”，或者从“未完成”到“失败”。一旦状态变为“完成”或“失败”，就不会在发生变化了。<br><br>
+        		then方法用来添加回调函数。接受两个回调函数，第一个是操作成功<b>（fulfilled）</b>的回调，第二个是操作失败<b>（rejected）</b>的回调。一旦状态改变，就调用相应函数。<br><br>
+        		详情见：<br>
+        		<a href="https://promisesaplus.com/" target="blank">英文：https://promisesaplus.com/</a><br>
+        		<a href="http://www.ituring.com.cn/article/66566/" target="blank">中文：http://www.ituring.com.cn/article/66566/</a><br>
+        		<br>
+        		jQuery从1.5版本以后，参照此规范(非完全)，结合自己的模块有了自己的实现。
+        	</p>
+        </div>
+
+        <div class="step ppt" data-x="4050" data-y="0">
+        	<h6>jQuery promise</h6>
+            <p class="article left">
+            	传统写法：<br>
+            	<img src="images/traditional.jpg" />
+            </p>
+            <p class="article right">
+            	Promises写法：<br>
+            	<img src="images/promises.jpg" />
+            </p>
+            <p class="article">
+            	从上面代码可以看出，采用Promises接口之后，程序流程变得清晰易懂。<br>
+            	传统回调函数写法会使得代码混成一团，变得横向发展而不是向下发展。
+            </p>
+
+        </div>
+
+        <div class="step ppt" data-x="4050" data-y="850" data-rotate-z="180">
+            <h6>方法简介</h6>
+            <p class="article left">
+            	<img src="images/official-demo.jpg" />
+            </p>
+            <p class="article right">
+            	<img src="images/results.jpg" />
+            </p>
+            <p class="article left">
+            	<img src="images/link_mod.jpg" />
+            </p>
+            <p class="article right">
+            	<img src="images/results.jpg" />
+            </p>         
+        </div>
+
+        <div class="step ppt" data-x="2700" data-y="850" data-rotate-z="180">
+        	<p class="article left">
+        		<img src="images/change_1.jpg" />
+        	</p>
+        	<p class="article right" style="-webkit-transform: translate3d(40px,-170px,0);">
+        		<img src="images/exceptions.jpg" />
+        	</p>
+        	<p class="article left">
+        		<b>why?</b><br>
+        		<b>Promise</b>是一个被屏蔽掉了<b>(resolve, reject, notify, resolveWith, rejectWith, 和 notifyWith)</b>方法的<b>Deferred</b>对象。Promise对象就是不能改变状态的Deferred对象，也就是Deferred的只读版。
+        		<img style="display: block;" src="images/defered_methods.jpg" />
+        		<img style="display: block; -webkit-transform: translate3d(140px,-215px,0);" src="images/promises_methods.jpg" />
+        	</p>
+        </div>
+
+        <div class="step ppt" data-x="1350" data-y="850" data-rotate-z="180">
+	        <h6>链式结构</h6>
+	        <br>
+            <p class="article">
+            	<img src="images/summary.jpg" />
+            </p>
+        </div>
+
+        <div class="step ppt global" data-x="2475" data-y="0" data-scale='10'>
+
+        </div>
+
+    </div>
+
+    <script type="text/javascript" src="script/impress.js"></script>
+    <script type="text/javascript">
+        impress().init();
+    </script>
+
+ </body>
+</html>

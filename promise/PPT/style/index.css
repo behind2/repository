@@ -1,0 +1,104 @@
+/* base setting begin */
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+body {
+    background: radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+}
+.step {
+    display: block;
+    width: 900px;
+    height: 700px;
+    margin: 0;
+    padding: 40px 60px;
+    border-radius: 10px;
+    letter-spacing: -1px;
+    opacity: 0.3;
+    box-sizing: border-box;
+    font-family: PT Serif, georgia, serif, Simsun;
+    font-size: 60px;
+    line-height: 1.5;
+
+    -webkit-transition: opacity 1s;
+    -moz-transition:    opacity 1s;
+    -o-transition:      opacity 1s;
+    -ms-transition:     opacity 1s;
+    transition:         opacity 1s;
+}
+.ppt {
+    border: 1px solid rgba(0, 0, 0, .3);
+    background-color: white;
+}
+.active {
+    opacity: 1;
+}
+.right {
+    float: right;
+}
+.left {
+    float: left;
+}
+.article {
+    display: inline-block;
+    font-size: 16px;
+}
+/* base setting end */
+
+/* tit step begin */
+.tit {
+    width: 1000px;
+    height: 200px;
+}
+.tit span {
+    display: inline-block;
+    -webkit-transform: translate3d(0, 0, 30px);
+}
+.tit.active span {
+    display: inline-block;
+    -webkit-transform: translate3d(0, 0, 0);
+    -webkit-transition: 2s;
+}
+.tit.past span {
+    display: inline-block;
+    -webkit-transform: translate3d(0, 0, 30px);
+    -webkit-transition: 2s;
+}
+/* tit step end */
+
+/* author step begin */
+.author {
+    height: 200px;
+    /*-webkit-transform: translate3d(0px, -200px, 0px);*/
+}
+.author p {
+    float: right;
+}
+.author span {
+    display: inline-block;
+    -webkit-transform: translate3d(0, 0, 45px);
+}
+.author.active span {
+    display: inline-block;
+    -webkit-transform: translate3d(0, 0, 0);
+    -webkit-transition: 2s;
+}
+.author.past span {
+    display: inline-block;
+    -webkit-transform: translate3d(0, 0, 30px);
+    -webkit-transition: 2s;
+}
+/* author step end */
+
+/* global step begin */
+.global.active {
+    opacity: 0;
+    -webkit-transition: 0s;
+}
+.global.past {
+    opacity: 0;
+    border: 0;
+    -webkit-transition: 0s;
+}
+/* global step begin */
