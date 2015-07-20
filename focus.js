@@ -30,7 +30,7 @@ define(['jquery'], function ($) {
          * version 版本号
          * @type {String}
          */
-        this.version = '1.0.2';
+        this.version = '1.0.3';
         /**
          * tabId 页卡容器ID
          * @type {String}
@@ -60,7 +60,7 @@ define(['jquery'], function ($) {
          * eventType 默认事件类型
          * @type {String}
          */
-        this.eventType = options.eventType || 'mouseenter';
+        // this.eventType = options.eventType || 'mouseenter';
         /**
          * defShowTabIdx 默认展示第几个Tab, 注意这里是索引值
          * @type {Number}
@@ -90,7 +90,7 @@ define(['jquery'], function ($) {
          * timeId 定时器Id
          * @type {Number}
          */
-        // this.timeId = null;// 暂时无用
+        this.timeId = null;
         /**
          * preBtnId 向前按钮容器ID
          * @type {String}
@@ -336,12 +336,12 @@ define(['jquery'], function ($) {
          * autoToggle 页卡自动切换
          */
         var autoToggle = function () {
-            setTimeout(function () {
+            _this.timeId = setTimeout(function () {
                 if ( _this.direction === 'next' ) {
                     forward();
                     //重定义
                     autoToggle = function () {
-                        setTimeout(function () {
+                        _this.timeId = setTimeout(function () {
                             forward();
                             autoToggle();
                         }, _this.timing);
@@ -350,7 +350,7 @@ define(['jquery'], function ($) {
                     backward();
                     // 重定义
                     autoToggle = function () {
-                        setTimeout(function () {
+                        _this.timeId = setTimeout(function () {
                             backward();
                             autoToggle();
                         }, _this.timing);
@@ -358,6 +358,13 @@ define(['jquery'], function ($) {
                 }
                 return autoToggle();
             }, _this.timing);
+        };
+        // 取消自动切换
+        var stopAutoToggle = function () {
+            if (_this.timeId) {
+                clearTimeout(_this.timeId);
+                _this.timeId = null;
+            }
         };
 
         /*************************************************************回调事件句柄&&事件绑定**************************************************************/
@@ -408,11 +415,21 @@ define(['jquery'], function ($) {
             goIndex(looping(_this.defShowTabIdx + 1));
         };
 
-        // tab页签事件注册
-        this.tabContainer.on(this.eventType, this.tabTag, function (e) {
+        // tab页签 移进
+        this.tabContainer.on('mouseenter', this.tabTag, function (e) {
             e = getEvent();
             preventEvent(e);
+
+            stopAutoToggle();
             tabToggle(e, this);
+        });
+
+        // tab页签 移出
+        this.tabContainer.on('mouseleave', this.tabTag, function (e) {
+            e = getEvent();
+            preventEvent(e);
+
+            autoToggle();
         });
 
         // 加绑定条件限制
@@ -424,12 +441,42 @@ define(['jquery'], function ($) {
                 preventEvent(e);
                 backward();
             });
+            // 移入
+            $('#' + this.preBtnId).on('mouseenter', function (e) {
+                e = getEvent();
+                preventEvent(e);
+
+                stopAutoToggle();
+            });
+            // 移出
+            $('#' + this.preBtnId).on('mouseleave', function (e) {
+                e = getEvent();
+                preventEvent(e);
+
+                autoToggle();
+            });
+
+
 
             // 右侧按钮
             $('#' + this.nextBtnId).on('click', function (e) {
                 e = getEvent();
                 preventEvent(e);
                 forward();
+            });
+            // 移入
+            $('#' + this.nextBtnId).on('mouseenter', function (e) {
+                e = getEvent();
+                preventEvent(e);
+
+                stopAutoToggle();
+            });
+            // 移出
+            $('#' + this.nextBtnId).on('mouseleave', function (e) {
+                e = getEvent();
+                preventEvent(e);
+
+                autoToggle();
             });
 
         }
@@ -468,12 +515,18 @@ define(['jquery'], function ($) {
 
         // 取消tab事件
         var delTab = function () {
-            _this.tabContainer.off(_this.eventType);
+            _this.tabContainer.off('mouseenter');
+            _this.tabContainer.off('mouseleave');
         };
         // 取消btn事件
         var delBtn = function () {
             $('#' + _this.preBtnId).off('click');
+            $('#' + _this.preBtnId).off('mouseenter');
+            $('#' + _this.preBtnId).off('mouseleave');
+
             $('#' + _this.nextBtnId).off('click');
+            $('#' + _this.nextBtnId).off('mouseenter');
+            $('#' + _this.nextBtnId).off('mouseleave');
         };
 
         if (type === 'tab') {
