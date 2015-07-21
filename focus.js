@@ -1,7 +1,7 @@
 /**
  * NBA Focus.js
  *
- * Released 1.0.0
+ * Released 1.0.5
  *
  * @author <a href="mailto:behindli@tencent.com">Behind Li</a>
  * @description NBA Focus Toggle Focus.js
@@ -30,7 +30,7 @@ define(['jquery'], function ($) {
          * version 版本号
          * @type {String}
          */
-        this.version = '1.0.3';
+        this.version = '1.0.5';
         /**
          * tabId 页卡容器ID
          * @type {String}
@@ -292,9 +292,11 @@ define(['jquery'], function ($) {
                         return;// 不作展示渲染
                     } else if ( !flag && index - _this.defShowTabIdx ===  1 - _this.tabSize ) {// 由尾切换到头
                         _this.tabContentContainer.stop(true, true).animate({marginLeft: -1 * (_this.defShowTabIdx + 2) * step}, 300, function () { adjustPosition(index); });
+                        $.proxy(_this.switchAfter, _this.tabContentTags.get(_this.defShowTabIdx))(index);
                         return;
                     } else if ( !flag && index - _this.defShowTabIdx === _this.tabSize - 1 ) {// 由头切换到尾
                         _this.tabContentContainer.stop(true, true).animate({marginLeft: _this.defShowTabIdx * step}, 300, function () { adjustPosition(index); });
+                        $.proxy(_this.switchAfter, _this.tabContentTags.get(_this.defShowTabIdx))(index);
                         return;
                     }
                     // 动画渲染主函数
@@ -336,34 +338,38 @@ define(['jquery'], function ($) {
          * autoToggle 页卡自动切换
          */
         var autoToggle = function () {
-            _this.timeId = setTimeout(function () {
-                if ( _this.direction === 'next' ) {
-                    forward();
-                    //重定义
-                    autoToggle = function () {
-                        _this.timeId = setTimeout(function () {
-                            forward();
-                            autoToggle();
-                        }, _this.timing);
-                    };
-                } else if ( _this.direction === 'pre' ) {
-                    backward();
-                    // 重定义
-                    autoToggle = function () {
-                        _this.timeId = setTimeout(function () {
-                            backward();
-                            autoToggle();
-                        }, _this.timing);
-                    };
-                }
-                return autoToggle();
-            }, _this.timing);
+            if ( _this.isAuto && _this.timing ) {
+                _this.timeId = setTimeout(function () {
+                    if ( _this.direction === 'next' ) {
+                        forward();
+                        //重定义
+                        autoToggle = function () {
+                            _this.timeId = setTimeout(function () {
+                                forward();
+                                autoToggle();
+                            }, _this.timing);
+                        };
+                    } else if ( _this.direction === 'pre' ) {
+                        backward();
+                        // 重定义
+                        autoToggle = function () {
+                            _this.timeId = setTimeout(function () {
+                                backward();
+                                autoToggle();
+                            }, _this.timing);
+                        };
+                    }
+                    return autoToggle();
+                }, _this.timing);
+            }
         };
         // 取消自动切换
         var stopAutoToggle = function () {
-            if (_this.timeId) {
-                clearTimeout(_this.timeId);
-                _this.timeId = null;
+            if ( _this.isAuto && _this.timing ) {
+                if (_this.timeId) {
+                    clearTimeout(_this.timeId);
+                    _this.timeId = null;
+                }
             }
         };
 
@@ -501,9 +507,9 @@ define(['jquery'], function ($) {
             goIndex(_this.defShowTabIdx);
         }
         // 判断是否需要自动轮播
-        if ( _this.isAuto && _this.timing ) {
+        // if ( _this.isAuto && _this.timing ) {
             autoToggle();
-        }
+        // }
     };
 
     /**
