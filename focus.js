@@ -1,7 +1,7 @@
 /**
  * NBA Focus.js
  *
- * Released 1.0.5
+ * Released 1.0.6
  *
  * @author <a href="mailto:behindli@tencent.com">Behind Li</a>
  * @description NBA Focus Toggle Focus.js
@@ -30,7 +30,7 @@ define(['jquery'], function ($) {
          * version 版本号
          * @type {String}
          */
-        this.version = '1.0.5';
+        this.version = '1.0.6';
         /**
          * tabId 页卡容器ID
          * @type {String}
@@ -292,11 +292,11 @@ define(['jquery'], function ($) {
                         return;// 不作展示渲染
                     } else if ( !flag && index - _this.defShowTabIdx ===  1 - _this.tabSize ) {// 由尾切换到头
                         _this.tabContentContainer.stop(true, true).animate({marginLeft: -1 * (_this.defShowTabIdx + 2) * step}, 300, function () { adjustPosition(index); });
-                        $.proxy(_this.switchAfter, _this.tabContentTags.get(_this.defShowTabIdx))(index);
+                        $.proxy(_this.switchAfter, _this.tabContentTags.get(index))(index);
                         return;
                     } else if ( !flag && index - _this.defShowTabIdx === _this.tabSize - 1 ) {// 由头切换到尾
                         _this.tabContentContainer.stop(true, true).animate({marginLeft: _this.defShowTabIdx * step}, 300, function () { adjustPosition(index); });
-                        $.proxy(_this.switchAfter, _this.tabContentTags.get(_this.defShowTabIdx))(index);
+                        $.proxy(_this.switchAfter, _this.tabContentTags.get(index))(index);
                         return;
                     }
                     // 动画渲染主函数
@@ -421,13 +421,21 @@ define(['jquery'], function ($) {
             goIndex(looping(_this.defShowTabIdx + 1));
         };
 
+        // 延迟设置
+        var delayTimeId = null, delayTiming = 100;
+
         // tab页签 移进
         this.tabContainer.on('mouseenter', this.tabTag, function (e) {
             e = getEvent();
             preventEvent(e);
 
+            var ele = this;
             stopAutoToggle();
-            tabToggle(e, this);
+
+            delayTimeId = setTimeout(function () {
+                tabToggle(e, ele);
+            }, delayTiming);
+
         });
 
         // tab页签 移出
@@ -435,7 +443,13 @@ define(['jquery'], function ($) {
             e = getEvent();
             preventEvent(e);
 
+            if (delayTimeId) {
+                clearTimeout(delayTimeId);
+                delayTimeId = null;
+            }
+
             autoToggle();
+
         });
 
         // 加绑定条件限制
