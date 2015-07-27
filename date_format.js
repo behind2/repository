@@ -1,7 +1,7 @@
 ;(function () {
         /**
          * 对日期进行格式化，
-         * @param date 要格式化的日期
+         * @param date 要格式化的日期/毫秒数
          * @param format 进行格式化的模式字符串
          *     支持的模式字母有：
          *     y:年,
@@ -16,6 +16,11 @@
          * @author kohbehind2@gmail.com
          */
         function dateFormat(date, format) {
+            // 毫秒数
+            if (typeof date === 'number') {
+                date = new Date(date);
+            }
+
             if(format === undefined){
                 format = date;
                 date = new Date();
