@@ -125,7 +125,6 @@ define(['jquery'], function ($) {
         // API分层
         this.view = {};//业务暂不需要
         this.model = {};//保护隐藏, 不暴露
-        this.ctrl = {};
 
         /*---------------------------------------end---------------------------------------*/
         /**
@@ -323,13 +322,14 @@ define(['jquery'], function ($) {
          * @return {Number}     经过边界校验的索引值
          */
         var looping = (function () {
-            var max = _this.tabSize - 1;
             if ( _this.isLoop ) {// 循环
                 return function (idx) {
+                    var max = _this.tabSize - 1;
                     return idx > max ? 0 : idx < 0 ? max : idx;
                 };
             } else {// 不循环
                 return function (idx) {
+                    var max = _this.tabSize - 1;
                     return idx > max ? max : idx < 0 ? 0 : idx;
                 };
             }
@@ -502,7 +502,12 @@ define(['jquery'], function ($) {
         }
 
         /*************************************************************暴露事件上层接口**************************************************************/
+        this.ctrl = {};
         // 对外暴露的接口
+        // 初始化
+        this.ctrl.init = function () {
+            Focus.prototype.initParams.apply(_this, arguments);
+        };
         // 后退
         this.ctrl.backward = function () {
             backward.apply(_this, arguments);
