@@ -30,7 +30,7 @@ define(['jquery'], function ($) {
          * version 版本号
          * @type {String}
          */
-        this.version = '1.0.6';
+        this.version = '1.0.8';
         /**
          * tabId 页卡容器ID
          * @type {String}
@@ -185,19 +185,33 @@ define(['jquery'], function ($) {
          * extraInit 额外初始化
          */
         var extraInit = function () {
-            // 克隆
-            var _first = _this.tabContentTags.eq(0).clone(true, true);
-            var _last = _this.tabContentTags.eq(_this.tabSize - 1).clone(true, true);
 
-            // 不循环了
-            if (!_this.isLoop) {
-                _first.hide();
+            if (_this.isLoop) {
+                // 克隆
+                var _first = _this.tabContentTags.eq(0).clone(true, true);
+                var _last = _this.tabContentTags.eq(_this.tabSize - 1).clone(true, true);
+
+                // 在绝大多数情况下, 会默认显示第一页卡, 考虑到会通过添加样式标识选中状态, 以改变容器宽度, 故此还需要统一复制元素的类名,
+                // 否则_last拷贝过去的宽度无法统一, 默认展示会有问题, 此处增加样式处理.
+                // 暂且这么做吧, 以后有机会回头优化
+                // var _cls = _first.attr('class');
+                    // _last.addClass(_cls);
+                    // // 在此处增加步长
+                    // _this.step = _this.tabContentTags.eq(0).outerWidth(true);
+
+                // 不循环了
+                if (!_this.isLoop) {
+                    _first.hide();
+                }
+
+                // 插入
+                _last.prependTo(_this.tabContentContainer);
+                _this.tabContentContainer.append(_first);
+                _this.tabContentContainer.css({width: (_this.tabSize + 2) * parseInt(_this.tabContentTags.eq(0).outerWidth(true))});
+            } else {
+                _this.tabContentContainer.css({width: _this.tabSize * parseInt(_this.tabContentTags.eq(0).outerWidth(true))});
             }
 
-            // 插入
-            _last.prependTo(_this.tabContentContainer);
-            _this.tabContentContainer.append(_first);
-            _this.tabContentContainer.css({width: (_this.tabSize + 2) * parseInt(_this.tabContentTags.eq(0).outerWidth(true))});
         };
         // 当为滚动类型的焦点图时需要额外初始化
         if ( this.type === 'slide' ) {
@@ -257,7 +271,7 @@ define(['jquery'], function ($) {
                 // tab 页卡切换时的展示逻辑
                 displayContentTab = function (index, flag) {
                     // 切换前
-                    $.proxy(_this.switchBefore, _this.tabContentTags.get(_this.defShowTabIdx))(_this.defShowTabIdx);
+                    $.proxy(_this.switchBefore, _this)(_this.defShowTabIdx, _this.tabContentTags.get(_this.defShowTabIdx));
                     if (_this.defShowTabIdx - index === 0) {
                         return;// 不做改变
                     }
@@ -271,16 +285,17 @@ define(['jquery'], function ($) {
                     _this.defShowTabIdx = index;
 
                     // 切换后
-                    $.proxy(_this.switchAfter, _this.tabContentTags.get(_this.defShowTabIdx))(_this.defShowTabIdx);
+                    $.proxy(_this.switchAfter, _this)(_this.defShowTabIdx, _this.tabContentTags.get(_this.defShowTabIdx));
                 };
             } else if ( _this.type === 'slide' ) {
                 // 滑动页卡切换时的展示逻辑
                 displayContentTab = function (index, flag) {
                     // 切换前
-                    $.proxy(_this.switchBefore, _this.tabContentTags.get(_this.defShowTabIdx))(_this.defShowTabIdx);
+                    $.proxy(_this.switchBefore, _this)(_this.defShowTabIdx, _this.tabContentTags.get(_this.defShowTabIdx));
 
                     var step = _this.step || _this.tabContentTags.eq(0).outerWidth(true);
-                    var distance = -1 * (index + 1) * step;
+                    // var distance = -1 * (index + 1) * step;
+                    var distance = -1 * ( _this.isLoop ? index + 1 : index ) * step;
                     var adjustPosition = function () {
                         _this.tabContentContainer.css({'marginLeft': distance});
                         _this.defShowTabIdx = index;
@@ -291,11 +306,11 @@ define(['jquery'], function ($) {
                         return;// 不作展示渲染
                     } else if ( !flag && index - _this.defShowTabIdx ===  1 - _this.tabSize ) {// 由尾切换到头
                         _this.tabContentContainer.stop(true, true).animate({marginLeft: -1 * (_this.defShowTabIdx + 2) * step}, 300, function () { adjustPosition(index); });
-                        $.proxy(_this.switchAfter, _this.tabContentTags.get(index))(index);
+                        $.proxy(_this.switchAfter, _this)(index, _this.tabContentTags.get(index));
                         return;
                     } else if ( !flag && index - _this.defShowTabIdx === _this.tabSize - 1 ) {// 由头切换到尾
                         _this.tabContentContainer.stop(true, true).animate({marginLeft: _this.defShowTabIdx * step}, 300, function () { adjustPosition(index); });
-                        $.proxy(_this.switchAfter, _this.tabContentTags.get(index))(index);
+                        $.proxy(_this.switchAfter, _this)(index, _this.tabContentTags.get(index));
                         return;
                     }
                     // 动画渲染主函数
@@ -303,7 +318,7 @@ define(['jquery'], function ($) {
                     _this.defShowTabIdx = index;
 
                     // 切换后
-                    $.proxy(_this.switchAfter, _this.tabContentTags.get(_this.defShowTabIdx))(_this.defShowTabIdx);
+                    $.proxy(_this.switchAfter, _this)(_this.defShowTabIdx, _this.tabContentTags.get(_this.defShowTabIdx));
                 };
             }
             return displayContentTab(index, flag);
