@@ -10,6 +10,7 @@
  */
 define(['jquery'], function ($) {
 
+    var STEP = 0;//初始化的步长
     var Focus = function (options) {
         this.initParams(options);
         this.bindDOM();
@@ -30,7 +31,7 @@ define(['jquery'], function ($) {
          * version 版本号
          * @type {String}
          */
-        this.version = '1.0.8';
+        this.version = '1.0.9';
         /**
          * tabId 页卡容器ID
          * @type {String}
@@ -60,7 +61,7 @@ define(['jquery'], function ($) {
          * eventType 默认事件类型
          * @type {String}
          */
-        // this.eventType = options.eventType || 'mouseenter';
+        this.eventType = options.eventType || 'mouseenter';
         /**
          * defShowTabIdx 默认展示第几个Tab, 注意这里是索引值
          * @type {Number}
@@ -117,10 +118,10 @@ define(['jquery'], function ($) {
          */
         this.isCheck = options.isCheck || false;
         /**
-         * step 滚动步长
+         * step 初始化步长 或因为增加样而导致容器宽度变化后的值
          * @type {Number} units/px
          */
-        this.step = options.step || null;
+        // this.step = STEP || options.step || null;
 
         // API分层
         this.view = {};//业务暂不需要
@@ -186,18 +187,12 @@ define(['jquery'], function ($) {
          */
         var extraInit = function () {
 
+            STEP = _this.tabContentTags.eq(_this.defShowTabIdx).outerWidth(true);// 布局使用
+
             if (_this.isLoop) {
                 // 克隆
                 var _first = _this.tabContentTags.eq(0).clone(true, true);
                 var _last = _this.tabContentTags.eq(_this.tabSize - 1).clone(true, true);
-
-                // 在绝大多数情况下, 会默认显示第一页卡, 考虑到会通过添加样式标识选中状态, 以改变容器宽度, 故此还需要统一复制元素的类名,
-                // 否则_last拷贝过去的宽度无法统一, 默认展示会有问题, 此处增加样式处理.
-                // 暂且这么做吧, 以后有机会回头优化
-                // var _cls = _first.attr('class');
-                    // _last.addClass(_cls);
-                    // // 在此处增加步长
-                    // _this.step = _this.tabContentTags.eq(0).outerWidth(true);
 
                 // 不循环了
                 if (!_this.isLoop) {
@@ -207,9 +202,9 @@ define(['jquery'], function ($) {
                 // 插入
                 _last.prependTo(_this.tabContentContainer);
                 _this.tabContentContainer.append(_first);
-                _this.tabContentContainer.css({width: (_this.tabSize + 2) * parseInt(_this.tabContentTags.eq(0).outerWidth(true))});
+                _this.tabContentContainer.css({width: (_this.tabSize + 2) * STEP});
             } else {
-                _this.tabContentContainer.css({width: _this.tabSize * parseInt(_this.tabContentTags.eq(0).outerWidth(true))});
+                _this.tabContentContainer.css({width: _this.tabSize * STEP});
             }
 
         };
@@ -292,9 +287,12 @@ define(['jquery'], function ($) {
                 displayContentTab = function (index, flag) {
                     // 切换前
                     $.proxy(_this.switchBefore, _this)(_this.defShowTabIdx, _this.tabContentTags.get(_this.defShowTabIdx));
+                    // 为了与因为添加样式而导致容器宽度变化的步长保持一致, 顺序一定为先改变页签最后为页签容器
+                    // 取前一次容器的宽度
+                    // var step = _this.tabContentTags.eq(_this.defShowTabIdx).outerWidth(true);
+                    // 如果前后两次索引值相同, 那么动画改用前一个容器的宽度
+                    var step = index - _this.defShowTabIdx === 0 ? _this.tabContentTags.eq(looping(_this.defShowTabIdx - 1)).outerWidth(true) : _this.tabContentTags.eq(_this.defShowTabIdx).outerWidth(true);
 
-                    var step = _this.step || _this.tabContentTags.eq(0).outerWidth(true);
-                    // var distance = -1 * (index + 1) * step;
                     var distance = -1 * ( _this.isLoop ? index + 1 : index ) * step;
                     var adjustPosition = function () {
                         _this.tabContentContainer.css({'marginLeft': distance});
@@ -439,33 +437,66 @@ define(['jquery'], function ($) {
         // 延迟设置
         var delayTimeId = null, delayTiming = 100;
 
-        // tab页签 移进
-        this.tabContainer.on('mouseenter', this.tabTag, function (e) {
-            e = getEvent();
-            preventEvent(e);
+        if ( this.eventType === 'click' ) {
 
-            var ele = this;
-            stopAutoToggle();
+            // tab页签 点击
+            this.tabContainer.on('click', this.tabTag, function (e) {
+                e = getEvent();
+                preventEvent(e);
 
-            delayTimeId = setTimeout(function () {
-                tabToggle(e, ele);
-            }, delayTiming);
+                tabToggle(e, this);
+            });
 
-        });
+            // tab页签 移进
+            this.tabContainer.on('mouseenter', this.tabTag, function (e) {
+                e = getEvent();
+                preventEvent(e);
 
-        // tab页签 移出
-        this.tabContainer.on('mouseleave', this.tabTag, function (e) {
-            e = getEvent();
-            preventEvent(e);
+                var ele = this;
+                stopAutoToggle();
 
-            if (delayTimeId) {
-                clearTimeout(delayTimeId);
-                delayTimeId = null;
-            }
+            });
 
-            autoToggle();
+            // tab页签 移出
+            this.tabContainer.on('mouseleave', this.tabTag, function (e) {
+                e = getEvent();
+                preventEvent(e);
 
-        });
+                autoToggle();
+
+            });
+
+        } else if ( this.eventType === 'mouseenter' ) {
+
+            // tab页签 移进
+            this.tabContainer.on('mouseenter', this.tabTag, function (e) {
+                e = getEvent();
+                preventEvent(e);
+
+                var ele = this;
+                stopAutoToggle();
+
+                delayTimeId = setTimeout(function () {
+                    tabToggle(e, ele);
+                }, delayTiming);
+
+            });
+
+            // tab页签 移出
+            this.tabContainer.on('mouseleave', this.tabTag, function (e) {
+                e = getEvent();
+                preventEvent(e);
+
+                if (delayTimeId) {
+                    clearTimeout(delayTimeId);
+                    delayTimeId = null;
+                }
+
+                autoToggle();
+
+            });
+
+        }
 
         // 加绑定条件限制
         if ( this.preBtnId && this.nextBtnId ) {
