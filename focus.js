@@ -1,7 +1,7 @@
 /**
  * NBA Focus.js
  *
- * Released 1.0.6
+ * Released 1.0.9
  *
  * @author <a href="mailto:behindli@tencent.com">Behind Li</a>
  * @description NBA Focus Toggle Focus.js
