@@ -1,7 +1,7 @@
 /**
  * NBA Focus.js
  *
- * Released 1.0.9
+ * Released 1.0.6
  *
  * @author <a href="mailto:behindli@tencent.com">Behind Li</a>
  * @description NBA Focus Toggle Focus.js
@@ -31,7 +31,7 @@ define(['jquery'], function ($) {
          * version 版本号
          * @type {String}
          */
-        this.version = '1.0.9';
+        this.version = '1.0.10';
         /**
          * tabId 页卡容器ID
          * @type {String}
@@ -118,6 +118,16 @@ define(['jquery'], function ($) {
          */
         this.isCheck = options.isCheck || false;
         /**
+         * isBuildTabTags 是否自动构建tabTags, 默认为不构建.
+         * @type {Boolean}
+         */
+        this.isBuildTabTags = options.isBuildTabTags || false;
+        /**
+         * tabUnit tab页签的基础单元
+         * @type {DOM/DOM String}
+         */
+        this.tabUnit = options.tabUnit || null;
+        /**
          * step 初始化步长 或因为增加样而导致容器宽度变化后的值
          * @type {Number} units/px
          */
@@ -164,11 +174,6 @@ define(['jquery'], function ($) {
             }
             // 补充声明
             /**
-             * tabTags 页签List
-             * @type {Array}
-             */
-            _this.tabTags = _this.tabContainer.find('>' + _this.tabTag);
-            /**
              * tabContentTags 页卡内容标签List
              * @type {Array}
              */
@@ -178,6 +183,21 @@ define(['jquery'], function ($) {
              * @type {Number}
              */
             _this.tabSize = _this.tabContentTags.size();
+
+
+            if (_this.isBuildTabTags && _this.tabUnit) {// 自动构建&&(当手动修改标签内容页卡时, 页签也需要同步更新)
+                var _str = '';
+                for ( var i = 0; i < _this.tabSize; i ++ ) {
+                    _str += _this.tabUnit;
+                }
+                _this.tabContainer.html(_str);
+
+            }
+            /**
+             * tabTags 页签List
+             * @type {Array}
+             */
+            _this.tabTags = _this.tabContainer.find('>' + _this.tabTag);
         };
         // 调用
         checkOptions();
