@@ -1,0 +1,151 @@
+@import "include/config";
+@import "include/mixins";
+
+.area-focus {
+
+    .slide-wrap {
+        @height: 400px;
+        width: 100%;
+        height: @height;
+        overflow: hidden;
+        background-color: #333;
+        position: relative;
+        ol {
+            width: @page_width * 6;
+            .small-width-screen({ width: @page_width_small * 6; });
+            height: @height;
+            margin-left: 0;// - @page_width *2;
+            li {
+                display: block;
+                float: left;
+                width: @page_width;
+                .small-width-screen({ width: @page_width_small; });
+                height: @height;
+                background-color: #EFEFEF;
+                font-size: 0;
+                position: relative;
+                overflow: hidden;
+                .page-wrap {
+                    height: 100%;
+                    a.pic {
+                        display: block;
+                        position: relative;
+                        cursor: pointer;
+                        overflow: hidden;
+                        img { .transition(transform 2s ease-out); }
+                        p {
+                            position: absolute;
+                            left: 0;
+                            bottom: 0;
+                            width: 100%;
+                            text-align: left;
+                            text-indent: 1em;
+                            color: #FFF;
+                            background-color: rgba(0,0,0,.6);
+                            -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=1, StartColorStr='#99000000', EndColorStr='#99000000')";
+                                filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#99000000', EndColorStr='#99000000');
+                            zoom: 1;
+
+                            height: 70px;
+                            line-height: 70px;
+                            font-size: 24px;
+                        }
+                        &:hover img { .transform(scale(1.02)); }
+                    }
+                }
+            }
+            li.col-1 {
+                .page-wrap {
+                    width: 100%;
+                    a.pic {
+                        width: 100%;
+                        height: 100%;
+                        div {
+                            width: 100%;
+                            height: 100%;
+                            img {
+                                width: 100%;
+                                height: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+
+            li.col-2 {
+                @space: 10px;
+                @count: 2;
+                .page-wrap {
+                    width: @page_width + @space;
+                    .small-width-screen({ width: @page_width_small + @space; });
+                    a.pic {
+                        width: (@page_width - (@count - 1) * @space) / @count;
+                        .small-width-screen({ width: (@page_width_small - (@count - 1) * @space) / @count; });
+                        height: 100%;
+                        float: left;
+                        margin-right: @space;
+                    }
+                }
+            }
+
+            li.col-3 {
+                @space: 5px;
+                @count: 3;
+                .page-wrap {
+                    width: @page_width + @space;
+                    .small-width-screen({ width: @page_width_small + @space; });
+                    a.pic {
+                        width: (@page_width - (@count - 1) * @space) / @count;
+                        .small-width-screen({ width: (@page_width_small - (@count - 1) * @space) / @count; });
+                        height: 100%;
+                        float: left;
+                        margin-right: @space;
+                    }
+                }
+            }
+        }
+
+        .control-prev,
+        .control-next {
+            position: absolute;
+            height: 80px;
+            width: 50px;
+            top: 50%;
+            margin-top: -40px;
+            // background-color:red;
+            background-image: url("@{static_base}/focus_control_btn.png");
+            background-image: -webkit-image-set(url("@{static_base}/focus_control_btn.png") 1x, url("@{static_base}/focus_control_btn--2x.png") 2x);
+            background-repeat: no-repeat;
+            .transition(background .2s);
+
+            &:hover {
+                background-color: #000;
+                background-color: rgba(0,0,0,.6);
+            }
+        }
+        .control-prev { left: 0;  background-position: 14px 16px; }
+        .control-next { right: 0; background-position: 18px -184px; }
+
+    }
+
+    .paging {
+        font-size: 0;
+        margin-top: 20px;
+        ol {
+            height: 5px;
+            text-align: center;
+            li {
+                .inline-block();
+                width: 30px;
+                height: 5px;
+                margin: 0 5px;
+                background-color: #e6e6e6;
+                cursor: pointer;
+
+                &.current {
+                    background-color: #d33556;
+                }
+            }
+        }
+    }
+}

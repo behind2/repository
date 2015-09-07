@@ -1,0 +1,24 @@
+@import "include/config";
+@import "include/mixins";
+
+.elevator {
+    position: fixed;
+    _display: none;
+    width: 40px;
+    bottom: 30px;
+    left: 50%;
+    margin-left: (@page_width) / 2 + 30px;
+    .small-width-screen({ margin-left: (@page_width_small) / 2 + 30px; });
+    background: #CCC;
+    box-shadow: 0 0 1px rgba(255,255,255,.6);
+
+    a {
+        display: block;
+        width: 40px;
+        height: 40px;
+        background-image: url("@{static_base}/elevator_sprite.png");
+        background-image: -webkit-image-set(url("@{static_base}/elevator_sprite.png") 1x, url("@{static_base}/elevator_sprite--2x.png") 2x);
+        background-repeat: no-repeat;
+    }
+    a.gotop { background-position: 0 0; }
+}

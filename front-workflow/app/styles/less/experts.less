@@ -1,0 +1,98 @@
+@import "include/config";
+@import "include/mixins";
+
+.area-experts {
+    .block-body {
+        margin-top: 30px;
+        height: 215px;
+        overflow: hidden;
+
+        .zhuanjia {
+            float: left;
+            padding: 0 0 15px 25px;
+            margin-left: 25px;
+            .small-width-screen({ margin-left: 55px; });
+            width: 249px;
+            border-left: 1px dashed #DDDDDD;
+            height: 200px;
+            // 清浮动
+            &:before, &:after {content: " "; display: table;}
+            &:after {clear: both;}
+            *zoom: 1;
+
+            // 照片
+            div.photo {
+                font-size: 0;
+                float: left;
+                width: 90px;
+                height: 90px;
+                margin-right: 16px;
+            }
+
+            // 名字
+            div.name {
+                overflow: hidden;
+
+                h3 {
+                    .f18();
+                    font-weight: bold;
+                    line-height: 1;
+                }
+                a.more {
+                    display: block;
+                    float: right;
+                    margin-top: 5px;
+
+                    .f12();
+                    color: #7A7F82;
+                    padding-right: 16px;
+                    background-image: url("@{static_base}/more_link_icons.png");
+                    background-image: -webkit-image-set(url("@{static_base}/more_link_icons.png") 1x, url("@{static_base}/more_link_icons--2x.png") 2x);
+                    background-repeat: no-repeat;
+                    background-position: right -117px;
+
+                    &:hover { color: #d33556; }
+                }
+
+                i.underline {
+                    display: block;
+                    font-size: 0;
+                    border-left: 20px solid #d33556;
+                    height: 2px;
+                    margin: 14px 0;
+                }
+            }
+
+            // 点评标题
+            div.title {
+                overflow: hidden;
+                .f16();
+                margin-bottom: 10px;
+                height: 48px;
+                line-height: 24px;
+            }
+
+            // 点评摘要
+            div.desc {
+                .f12();
+                color: #717171;
+                line-height: 20px;
+                text-indent: 1em;
+            }
+
+        }
+        .zhuanjia-large {
+            width: 340px;
+            border: none;
+            padding-left: 0;
+            margin-left: 0;
+
+            div.photo {
+                width: 125px;
+                height: 180px;
+                overflow: hidden;
+            }
+        }
+    }
+
+}

@@ -1,0 +1,445 @@
+@import "include/config";
+@import "include/mixins";
+
+.area-news {
+
+    // 左侧
+    .col-left {
+        float: left;
+        width: 410px;
+        margin-right: 10px;
+
+        ul {
+            border-bottom: 1px dashed #F0F0F0;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+            li {
+                // 不换行 超出隐藏
+                display: block;
+                white-space: nowrap;
+                word-break: keep-all;
+                overflow: hidden;
+                min-height: 30px;
+
+                // 普通链接
+                a {
+                    .f16();
+                    font-weight: normal;
+                    color: #081626;
+                    line-height: 30px;
+                    padding-right: 12px;
+                }
+                // 头条加粗
+                a.bold {
+                    .f18();
+                    font-weight: bold;
+                    color: #0f2744;
+                    line-height: 40px;
+                }
+                // 视频条、图片条
+                a.icon-v,
+                a.icon-p {
+                    background-image: url("@{static_base}/news_icons.png");
+                    background-repeat: no-repeat;
+                    padding-left: 24px;
+                }
+                a.icon-v { background-position: 0   6px; }
+                a.icon-p { background-position: 0 -55px; }
+
+                // 鼠标滑过
+                a:hover {
+                    color: #f23d63;
+                    text-decoration: none;
+                }
+
+                // 文字标签
+                .tag-red,
+                .tag-blue {
+                    .inline-block();
+                    .f14();
+                    color: #FFF;
+                    font-weight: normal;
+                    text-align: center;
+                    // width: 40px;
+                    height: 20px;
+                    line-height: 20px;
+                    margin-right: 12px;
+                    padding: 0 6px;
+                    &:hover {
+                        color: #FFF;
+                    }
+                }
+                .tag-red { background-color: #d33556; &:hover{background-color: lighten(#d33556, 5%); } }
+                .tag-blue{ background-color: #258ee7; &:hover{background-color: lighten(#258ee7, 5%); } }
+            }
+        }
+    }
+
+    // 中部
+    .col-middle {
+        float: left;
+        width: 520px;
+        .small-width-screen({ width: 580px; });
+
+        // 赛事精选
+        .mod-ssjx {
+            .hd {
+                @height: 30px;
+                height: @height;
+                margin: 0 10px 8px;
+                background-image: url("@{static_base}/title_ssjx.png");
+                background-image: -webkit-image-set(url("@{static_base}/title_ssjx.png") 1x, url("@{static_base}/title_ssjx--2x.png") 2x);
+                background-repeat: no-repeat;
+                background-position: 0 0;
+
+                .more {
+                    display: block;
+                    float: right;
+                    height: @height - 3px;
+                    line-height: @height - 3px;
+                    text-align: center;
+                    border-top: 3px solid #e6e6e6;
+                    width: 55px;
+                    position: relative;
+                    a {
+                        color: #a8a8a8;
+                        &:hover  { color: #333; }
+                    }
+                    .submenu {
+                        display: none;
+                        position: absolute;
+                        width: 170px;
+                        top: @height - 5px;
+                        right: 0;
+                        z-index: 10;
+
+                        background-color: #FFF;
+                        box-shadow: 0 0 4px rgba(0,0,0,.3);
+                        ul {
+                            margin-top: 10px;
+                            margin-bottom: 10px;
+                            li {
+                                border: 0;
+                                margin: 3px 0;
+                                padding: 0;
+                                width: auto;
+                                height: auto;
+                                float: none;
+                                a {
+                                    display: block;
+                                    height: 22px;
+                                    line-height: 22px;
+                                    padding-right: 16px;
+                                    text-align: right;
+                                    color: #a2a2a2;
+                                    font-size: 12px;
+                                    .transition(all .1s);
+                                    &:hover {
+                                        color: #fff;
+                                        background-color: #e72847;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    &:hover {
+                        a { color: #333; }
+                        .submenu { display: block; }
+                    }
+                }
+
+                ul {
+                    li {
+                        float: left;
+                        width: 158px;
+                        border-top: 3px solid #e6e6e6;
+                        height: @height - 3px;
+                        line-height: @height - 3px;
+                        margin-left: 2px;
+                        text-align: center;
+                        color: #a8a8a8;
+                        cursor: pointer;
+                        &:hover {
+                            color: #333;
+                        }
+                    }
+                    li.current { border-color: #D33556; }
+
+                    // 标题背景图上层 透明按钮 隐藏文字  隐藏样式
+                    li.title {
+                        height: @height;
+                        width: 118px;
+                        border: 0;
+                        text-indent: -9999px;
+                        font-size: 0;
+                    }
+                }
+            }
+            .bd {
+                display: none;// 先隐藏  由JS显示
+                height: 765px;
+                .small-width-screen({ height: 830px; });
+                overflow: hidden;
+                .pic-item {
+                    float: left;
+                    width: 240px;
+                    height: 135px;
+                    margin-left: 10px;
+                    margin-right: 10px;
+                    margin-bottom: 25px;
+                    .small-width-screen({
+                        width: 270px;
+                        height: 150px;
+                    });
+                }
+                .pic-item-large {
+                    width: 500px;
+                    height: 280px;
+                    margin-bottom: 30px;
+                    .small-width-screen({
+                        width: 560px;
+                        height: 320px;
+                    });
+                }
+
+                // 文字区
+                ul.text-news {
+                    display: block;
+                    width: 100%;
+                    float: left;//接着上面最后一张图pic-item
+                    li {
+                        display: block;
+                        margin: 0 10px;
+                        // 不换行 超出隐藏
+                        white-space: nowrap;
+                        word-break: keep-all;
+                        overflow: hidden;
+                        min-height: 30px;
+
+                        line-height: 36px;
+
+                        a {
+                            .f16();
+                            margin-right: 6px;
+                            &:hover {
+                                color: #D33556;
+                                text-decoration: underline;
+                            }
+                        }
+                        // 红底、蓝底
+                        a.tag-red,
+                        a.tag-blue {
+                            color: #FFF;
+                            padding: 1px 4px;
+                            .f14();
+                        }
+                        a.tag-red { background-color: #d33556; }
+                        a.tag-blue{ background-color: #258ee7; }
+                        // 视频条、图片条
+                        a.icon-v,
+                        a.icon-p {
+                            background-image: url("@{static_base}/news_icons.png");
+                            background-repeat: no-repeat;
+                            padding-left: 24px;
+                        }
+                        a.icon-v { background-position: 0   6px; }
+                        a.icon-p { background-position: 0 -55px; }
+                    }
+                }
+            }
+        }
+
+        // 灌篮高手
+        .mod-glgs {
+            width: 520px;
+            margin: 0 auto;
+            border-bottom: 1px solid #F0F0F0;
+            .hd {
+                height: 30px;
+                line-height: 30px;
+                margin: 0 10px;
+                h3 {
+                    .f16();
+                    float: left;
+                    font-weight: bold;
+                }
+                .sponsors {
+                    float: right;
+                    height: 30px;
+                    font-size: 0;
+                    a:hover {
+                        .opacity(80);
+                    }
+                }
+            }
+            .bd {
+                position: relative;
+                ul {
+                    width: 999px;
+                    li {
+                        float: left;
+                        margin: 0 10px;
+                    }
+                }
+                .control-prev,
+                .control-next {
+                    display: block;
+                    position: absolute;
+                    width: 25px;
+                    height: 25px;
+                    line-height: 24px;
+                    text-align: center;
+                    top: 50%;
+                    margin-top: -25px;
+                    z-index: 5;
+                    .f_song();
+                    .f16();
+                    color: white;
+                    background-color: @red;
+                    &:hover {
+                        background-color: lighten(@red, 5%);
+                    }
+                }
+                .control-prev { left:  0; }
+                .control-next { right: 0; }
+
+                .paging {
+                    height: 3px;
+                    margin: 20px 0;
+                    font-size: 0;
+                    ol {
+                        height: 3px;
+                        text-align: center;
+                        li {
+                            .inline-block();
+                            width: 20px;
+                            height: 3px;
+                            margin: 0 3px;
+                            background-color: #e6e6e6;
+                            cursor: pointer;
+
+                            &.current {
+                                background-color: #d33556;
+                            }
+                        }
+                    }
+                }
+
+            }
+        }//
+    }
+
+    // 右侧
+    .col-right {
+        float: left;
+        width: 280px;
+        margin-left: 20px;
+        .small-width-screen({ display: none; });
+
+        .sb-block {
+            margin-bottom: 25px;
+            .sb-hd {
+                height: 18px;
+                line-height: 18px;
+                padding-left: 6px;
+                border-left: 3px solid #e72847;
+                h3 {
+                    float: left;
+                    .f16();
+                    color: #0f2744;
+                    font-weight: bold;
+                }
+                .sponsor {
+                    float: left;
+                    margin-left: 10px;
+                }
+            }
+            .sb-bd {
+                margin-top: 20px;
+                .pic-item {
+                    width: 280px;
+                    height: 180px;
+                    .f12();
+                }
+                ul.news-list {
+                    margin-top: 10px;
+                    li {
+                        height: 34px;
+                        line-height: 34px;
+                        white-space: nowrap;
+                        word-break: keep-all;
+                        overflow: hidden;
+                    }
+                }
+            }
+        }
+    }
+
+    // 球队排名(右边栏)
+    .team-rank {
+        ul.tab {
+            @height: 34px;
+            li {
+                display: block;
+                height: @height;
+                line-height: 26px;
+                float: left;
+                width: 50%;
+                text-align: center;
+                // background-color: #CCC;
+
+                a {
+                    .f18();
+                    display: block;
+                    height: @height - 1;
+                    border-bottom: 1px solid #b9b9b9;
+                }
+                a.active {
+                    height: @height - 2;
+                    border-bottom: 2px solid #e72847;
+                }
+            }
+        }
+        .list {
+            .loading {
+                color: #CCC;
+                text-align: center;
+                padding: 20px 0;
+            }
+            table {
+                width: 100%;
+                th, td { text-align: center; height: 36px; color: #717171; }
+                thead { cursor: default; }
+                tbody { cursor: default; }
+                tbody tr {
+                    border-top: 1px solid #f0f0f0;
+                    &:hover { background-color: #FCFCFC; }
+                }
+                .name { color: #081626; }
+                .rank-num {
+                    font-style: normal;
+                    display: block;
+                    width: 32px;
+                    height: 28px;
+                    line-height: 28px;
+                    margin: 0 auto;
+                    color: white;
+                    background-color: #c1c1c1;
+                    font-family: Arial, sans-serif;
+                }
+                .rank-num-hl { background-color: @red; }
+            }
+        }
+        // 红蓝主题
+        &-west  {
+            ul.tab li a.active {  border-bottom-color: #e72847; }
+            .list table .rank-num-hl { background-color: @red;  }
+        }
+        &-east {
+            ul.tab li a.active {  border-bottom-color: @blue; }
+            .list table .rank-num-hl { background-color: @blue; }
+        }
+    }
+
+
+}

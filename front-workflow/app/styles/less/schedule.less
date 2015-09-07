@@ -1,0 +1,239 @@
+@import "include/config";
+@import "include/mixins";
+
+// schedule
+.area-schedule {
+    @height: 110px;
+
+    height: @height;
+
+    .sprite () {
+        background-image: url("@{static_base}/schedule_sprite.png");
+        background-repeat: no-repeat;
+    }
+
+
+    // 左日历 右全部赛程 85x110px
+    .calendar,
+    .all {
+        display: block;
+        color: #FFF;
+        background-color: #005896;
+        width: 85px;
+        height: @height;
+    }
+    .calendar {
+        float: left;
+        text-align: left;
+        .date {
+            width: 54px;
+            line-height: 24px;
+            margin: 30px 0 0 15px;
+            border-top: 1px solid #FFF;
+            border-bottom: 1px solid #FFF;
+            cursor: pointer;
+            position: relative;
+            &:hover ol { display: block; }
+            ol {
+                display: none;
+                width: 54px;
+                position: absolute;
+                top: 25px;
+                left: 0;
+                z-index: 2;
+                background-color: #fff;
+                padding: 3px 0;
+                box-shadow: 1px 1px 3px rgba(0,0,0,.6);
+                li {
+                    .f14();
+                    line-height: 20px;
+                    color: #CCC;
+                    text-align: center;
+                    &:hover {
+                        color: #FFF;
+                        background-color: #D33556;
+                    }
+                }
+            }
+
+            span { padding-right: 4px; }
+            b {
+                .inline-block();
+                .f12();
+                font-family: SimSun, sans-serif;
+                font-style: normal;
+                .transform(rotate(-90deg));
+                width: 8px;
+                height: 12px;
+                line-height: 12px;
+                text-align: left;
+            }
+
+        }
+        .count {
+            .f12();
+            margin-left: 15px;
+            margin-top: 4px;
+        }
+    }
+    .all {
+        float: right;
+        .sprite();
+        text-align: center;
+        background-position: 24px -330px;
+        padding-top: 62px;
+        height: @height - 62px;
+        &:hover {
+            background-color: lighten(#005896, 2%);
+        }
+    }
+
+    // 中间区  包括横向赛程列表和左右箭头
+    .middle {
+        margin: 0 85px;
+        // 左右箭头
+        a.prev,
+        a.next {
+            @btn-color: #006bb7;
+            display: block;
+            width: 15px;
+            height: @height;
+            line-height: @height;
+            text-align: center;
+            color: #FFF;
+            font-family: sans-serif;
+            background-color: @btn-color;
+            &:hover { background-color: lighten(@btn-color, 2%); }
+            i {
+                width: 0;
+                height: 0;
+                border-style: solid;
+                font-size: 0;
+                vertical-align: top;
+            }
+        }
+        a.prev {
+            float: left;
+            i {
+                border-width: 5px 8px 5px 0;
+                border-color: transparent #ffffff transparent transparent;
+            }
+        }
+        a.next {
+            float: right;
+            i {
+                border-width: 5px 0 5px 8px;
+                border-color: transparent transparent transparent #ffffff;
+            }
+        }
+
+        // 赛程列表
+        .match-list {
+            height: @height;
+            margin: 0 20px;
+            .small-width-screen({ margin: 0 15px; });
+            overflow: hidden;
+            position: relative;
+            ol {
+                height: 100%;
+                .f12();
+                // 列表项
+                li {
+                    display: block;
+                    float: left;
+                    width: 200px;
+                    height: 100%;
+                    margin: 0 3px;
+                    .small-width-screen({ margin: 0; });
+                    // background-color: #EEE;
+
+                    .banner {
+                        height: 22px;
+                        line-height: 22px;
+                        cursor: default;
+                        color: #FFF;
+                        i {
+                            .sprite();
+                            float: left;
+                            width: 78px;
+                            height: 100%;
+                            text-align: center;
+                            font-style: normal;
+                        }
+                        b {
+                            float: left;
+                            margin-left: 5px;
+                            font-family: Arial, sans-serif;
+                            font-weight: normal;
+                        }
+                        em {
+                            float: right;
+                            font-family: Arial, sans-serif;
+                            margin-right: 6px;
+                            letter-spacing: 1px;
+                        }
+                    }
+                    .match,
+                    .link {
+                        border: 1px solid #F5F5F5;
+                        border-top: none;
+                        background-color: #fff;
+                    }
+                    .match {
+                        height: 61px;
+                        .team {
+                            float: left;
+                            width: 55px;
+                            padding: 2px 0;
+                            text-align: center;
+                            img { height: 36px; }
+                        }
+                        .score {
+                            float: left;
+                            width: 88px;
+                            font-size: 20px;
+                            font-family: Arial, sans-serif;
+                            // font-weight: bold;
+                            text-align: center;
+                            padding-top: 14px;
+                            color: #393939;
+                            b.win { color: #D33357; }
+                        }
+                    }
+                    .link {
+                        height: 24px;
+                        line-height: 24px;
+                        padding-top: 1px;
+                        text-align: center;
+                        a {
+                            .sprite();
+                            padding-left: 18px;
+                            padding-right: 6px;
+
+                            &.video { background-position: 0  -78px; color: #005796; }
+                            &.live  { background-position: 0 -118px; color: #D13656; }
+                            &.replay{ background-position: 0 -158px; color: #D13656; }
+
+                            &:hover { .opacity(80); }
+                        }
+                    }
+
+                    &.gray,
+                    &.blue {
+                        .banner {
+                            background-color: #005896;
+                            i { background-position: 0 0; }
+                        }
+                    }
+                    &.red {
+                        .banner {
+                            background-color: #d33556;
+                            i { background-position: 0 -22px; }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}

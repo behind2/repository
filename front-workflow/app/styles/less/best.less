@@ -1,0 +1,136 @@
+@import "include/config";
+@import "include/mixins";
+
+.area-best {
+    .block-body {
+        ul {
+            margin-top: 32px;
+            li {
+                float: left;
+                display: block;
+                width: 300px;
+                .small-width-screen({ width: 240px; });
+                margin-right: 10px;
+                color: #081626;
+
+                .player-1 {
+                    cursor: pointer;
+                    position: relative;
+                    height: 240px;
+                    .small-width-screen({ height: 180px; });
+                    .info {
+                        float: left;
+                        width: 170px;
+                        .tag {
+                            height: 32px;
+                            line-height: 32px;
+                            color: white;
+                            .f18();
+                            text-indent: 16px;
+                            background-image: url("@{static_base}/best_tag_bg.png");
+                            background-image: -webkit-image-set(url("@{static_base}/best_tag_bg.png") 1x, url("@{static_base}/best_tag_bg--2x.png") 2x);
+                            background-repeat: no-repeat;
+                            background-position: 0 0;
+                        }
+                        .score {
+                            margin-top: 20px;
+                            font-size: 50px;
+                            font-family: Arial, sans-serif;
+                            font-weight: bold;
+                            line-height: 1;
+                        }
+                        i.underline {
+                            display: block;
+                            font-size: 0;
+                            border-left: 20px solid #d33556;
+                            height: 2px;
+                            margin: 3px 0;
+                        }
+                        .name {
+                            font-size: 24px;
+                        }
+                        .desc {
+                            .f12();
+                            color: #BABABA;
+                        }
+                    }
+                    .photo {
+                        overflow: hidden;
+                        position: absolute;
+                        right: 0;
+                        bottom: 0;
+                        img {
+                            width: 160px; height: 235px;
+                            .small-width-screen({ width: 110px; height: 175px; })
+                        }
+
+                    }
+
+                }
+
+                .player-2,
+                .player-3 {
+                    @height: 50px;
+                    height: @height;
+                    border-top: 1px solid #EFEFEF;
+                    padding: 10px 0;
+                    cursor: pointer;
+                    .rank {
+                        float: left;
+                        height: @height;
+                        line-height: @height;
+                        width: 33px;
+                        color: #006BB7;
+                        border-left: 2px solid #75AED6;
+                        background-color: #f9f9f9;
+                        font-size: 36px;
+                        font-family: Arial, sans-serif;
+                        font-weight: bold;
+                        text-align: center;
+                    }
+                    .photo {
+                        float: left;
+                        margin: 0 10px;
+                        img { width: 50px; height: 50px; }
+                        .small-width-screen({ display: none; });
+                    }
+                    .name {
+                        float: left;
+                        padding-top: 10px;
+                        line-height: 1;
+                        p {
+                            .f14();
+                        }
+                        span {
+                            .f12();
+                            color: #BABABA;
+                        }
+                    }
+                    .score {
+                        float: right;
+                        line-height: @height;
+                        font-size: 36px;
+                        font-family: Arial, sans-serif;
+                        color: #b6b6b6;
+                    }
+
+                    &:hover {
+                        .rank {
+                            color: @red;
+                            border-left-color: @red;
+                        }
+                    }
+                }
+
+                a.more {
+                    .f16();
+                    color: #999;
+                    line-height: 30px;
+                    span { font-family: sans-serif; }
+                    &:hover { color: #d33556; }
+                }
+
+            }
+        }
+    }
+}

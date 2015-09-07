@@ -1,0 +1,52 @@
+@import "include/config";
+@import "include/mixins";
+
+.area-hotv {
+    .block-body {
+        position: relative;
+
+        @h: 330px;
+        height: @h;
+        overflow: hidden;
+
+        // 左栏 大图
+        .col-left {
+            width: 400px;
+            float: left;
+            height: @h;
+        }
+        // 右栏 6小图
+        .col-right {
+            height: @h;
+            overflow: hidden;
+        }
+
+        // 图片样式覆盖
+        .pic-item {
+            float: left;
+            margin-top: 30px;
+            margin-left: 40px;
+            .small-width-screen({ margin-left: 60px; });
+        }
+        .pic-item-large {
+            width: 400px;
+            height: 225px;
+            margin-left: 0;
+        }
+
+        // 广告位
+        .sponsor {
+            display: block;
+            position: absolute;
+            width: 400px;
+            height: 50px;
+            line-height: 50px;
+            left: 0;
+            bottom: 0;
+            background-color: #EEE;
+            text-align: center;
+            color: #888;
+        }
+
+    }
+}
