@@ -283,7 +283,7 @@
         $.runSequence('clean', ['images', 'styles:build', 'requirejs'], 'scripts:build', 'scripts:build:after', 'html:build', 'html:build:after', 'styles:build:after');
     });
 
-    ////预览
+    //预览
     gulp.task('preview', ['open'], function () {
         $.connect.server({
             root: _.dist,
@@ -291,6 +291,53 @@
             livereload: true
         });
     });
+
+    //上传
+    gulp.task('upload', function () {
+
+        var getFileName = function (path) {
+            var name = '';
+            var fileNames = fs.readdirSync(path);
+                fileNames.forEach(function (filename) {
+                    var stats = fs.statSync(path + filename);
+                    if (!stats.isDirectory()) {
+                        name = filename;
+                        return false;
+                    }
+                });
+            return name;
+        };
+        var getRemotepath = function () {
+            var now = new Date();
+            var format = function (num) {
+                return num / 1 > 9 ? num / 1 : '0' + num / 1;
+            };
+            return '/' + now.getFullYear() + '/' + format(now.getMonth() + 1) + format(now.getDate());
+        };
+
+        //上传脚本和样式, html走cms
+        ['./dist/scripts/', './dist/styles/'].forEach(function (path) {
+            var FormData = $.formData;
+            var form = new FormData();
+
+                form.append('xxx', 'xxx');
+                form.append('xxx', getRemotepath() + path.substring(1));
+                form.append('xxx', fs.createReadStream( path + getFileName(path) ));
+
+                form.submit('http://xxx.xxx.xxx/xxx/xxx/', function (err, res) {
+                    if (err) throw err;
+
+                    $.util.log(res.statusCode + '\n');
+                    $.util.log('msg: ' + 'http://xxx.xxx.xxx/xxx/xxx/' + getRemotepath() + path.substring(1) + getFileName(path));
+
+                    res.resume();
+                });
+        });
+
+    });
+
+    //发布
+    gulp.task('release', ['upload']);
 
     //默认开发使用
     gulp.task('default', ['build']);
