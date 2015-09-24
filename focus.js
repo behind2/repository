@@ -1,8 +1,6 @@
 /**
  * NBA Focus.js
  *
- * Released 1.0.6
- *
  * @author <a href="mailto:behindli@tencent.com">Behind Li</a>
  * @description NBA Focus Toggle Focus.js
  * Copyright (C) 1998-2015 Tencent. All Rights Reserved
@@ -31,7 +29,7 @@ define(['jquery'], function ($) {
          * version 版本号
          * @type {String}
          */
-        this.version = '1.0.10';
+        this.version = '1.1.0';
         /**
          * tabId 页卡容器ID
          * @type {String}
@@ -126,7 +124,7 @@ define(['jquery'], function ($) {
          * tabUnit tab页签的基础单元
          * @type {DOM/DOM String}
          */
-        this.tabUnit = options.tabUnit || null;
+        // this.tabUnit = options.tabUnit || null;
         /**
          * step 初始化步长 或因为增加样而导致容器宽度变化后的值
          * @type {Number} units/px
@@ -185,10 +183,10 @@ define(['jquery'], function ($) {
             _this.tabSize = _this.tabContentTags.size();
 
 
-            if (_this.isBuildTabTags && _this.tabUnit) {// 自动构建&&(当手动修改标签内容页卡时, 页签也需要同步更新)
-                var _str = '';
+            if (_this.isBuildTabTags && _this.tabTag) {// 自动构建&&(当手动修改标签内容页卡时, 页签也需要同步更新)
+                var _str = '', tabUnit = document.createElement(_this.tabTag).outerHTML;
                 for ( var i = 0; i < _this.tabSize; i ++ ) {
-                    _str += _this.tabUnit;
+                    _str += tabUnit;
                 }
                 _this.tabContainer.html(_str);
 
@@ -287,9 +285,9 @@ define(['jquery'], function ($) {
                 displayContentTab = function (index, flag) {
                     // 切换前
                     $.proxy(_this.switchBefore, _this)(_this.defShowTabIdx, _this.tabContentTags.get(_this.defShowTabIdx));
-                    if (_this.defShowTabIdx - index === 0) {
-                        return;// 不做改变
-                    }
+                    // if (_this.defShowTabIdx - index === 0) {
+                    //     return;// 不做改变
+                    // }
                     $.each(_this.tabContentTags, function (idx, ele) {
                         if ( index === idx ) {
                             $(ele).css('display', 'block');
@@ -333,6 +331,33 @@ define(['jquery'], function ($) {
                     }
                     // 动画渲染主函数
                     _this.tabContentContainer.stop(true, true).animate({marginLeft: distance}, 300);
+                    _this.defShowTabIdx = index;
+
+                    // 切换后
+                    $.proxy(_this.switchAfter, _this)(_this.defShowTabIdx, _this.tabContentTags.get(_this.defShowTabIdx));
+                };
+            } else if ( _this.type === 'fade' ) {
+                // tab 页卡切换时的展示逻辑
+                displayContentTab = function (index, flag) {
+                    // 切换前
+                    $.proxy(_this.switchBefore, _this)(_this.defShowTabIdx, _this.tabContentTags.get(_this.defShowTabIdx));
+                    // if (_this.defShowTabIdx - index === 0) {
+                    //     return;// 不做改变
+                    // }
+                    $.each(_this.tabContentTags, function (idx, ele) {
+                        if ( index === idx ) {
+                            if ( index === _this.defShowTabIdx ) {
+                                $(ele).css({display: 'block', opacity: 1});// 初始化时, 直接显示就好了
+                            } else {// 切换的时候
+                                _this.tabContentTags.eq(index).stop(true, true).css('display', 'block').animate({opacity: 1}, 600);
+                                _this.tabContentTags.eq(_this.defShowTabIdx).stop(true, true).animate({opacity: 0.6}, 600).css('display', 'none');
+                            }
+                        } else if ( _this.defShowTabIdx === idx ) {
+                            // 什么都不做
+                        } else {
+                            $(ele).css({display: 'none', opacity: 0.6});
+                        }
+                    });
                     _this.defShowTabIdx = index;
 
                     // 切换后
@@ -461,7 +486,7 @@ define(['jquery'], function ($) {
 
             // tab页签 点击
             this.tabContainer.on('click', this.tabTag, function (e) {
-                e = getEvent();
+                e = getEvent(e);
                 preventEvent(e);
 
                 tabToggle(e, this);
@@ -469,7 +494,7 @@ define(['jquery'], function ($) {
 
             // tab页签 移进
             this.tabContainer.on('mouseenter', this.tabTag, function (e) {
-                e = getEvent();
+                e = getEvent(e);
                 preventEvent(e);
 
                 var ele = this;
@@ -479,7 +504,7 @@ define(['jquery'], function ($) {
 
             // tab页签 移出
             this.tabContainer.on('mouseleave', this.tabTag, function (e) {
-                e = getEvent();
+                e = getEvent(e);
                 preventEvent(e);
 
                 autoToggle();
@@ -490,7 +515,7 @@ define(['jquery'], function ($) {
 
             // tab页签 移进
             this.tabContainer.on('mouseenter', this.tabTag, function (e) {
-                e = getEvent();
+                e = getEvent(e);
                 preventEvent(e);
 
                 var ele = this;
@@ -504,7 +529,7 @@ define(['jquery'], function ($) {
 
             // tab页签 移出
             this.tabContainer.on('mouseleave', this.tabTag, function (e) {
-                e = getEvent();
+                e = getEvent(e);
                 preventEvent(e);
 
                 if (delayTimeId) {
@@ -523,20 +548,20 @@ define(['jquery'], function ($) {
 
             // 左侧按钮
             $('#' + this.preBtnId).on('click', function (e) {
-                e = getEvent();
+                e = getEvent(e);
                 preventEvent(e);
                 backward();
             });
             // 移入
             $('#' + this.preBtnId).on('mouseenter', function (e) {
-                e = getEvent();
+                e = getEvent(e);
                 preventEvent(e);
 
                 stopAutoToggle();
             });
             // 移出
             $('#' + this.preBtnId).on('mouseleave', function (e) {
-                e = getEvent();
+                e = getEvent(e);
                 preventEvent(e);
 
                 autoToggle();
@@ -546,20 +571,20 @@ define(['jquery'], function ($) {
 
             // 右侧按钮
             $('#' + this.nextBtnId).on('click', function (e) {
-                e = getEvent();
+                e = getEvent(e);
                 preventEvent(e);
                 forward();
             });
             // 移入
             $('#' + this.nextBtnId).on('mouseenter', function (e) {
-                e = getEvent();
+                e = getEvent(e);
                 preventEvent(e);
 
                 stopAutoToggle();
             });
             // 移出
             $('#' + this.nextBtnId).on('mouseleave', function (e) {
-                e = getEvent();
+                e = getEvent(e);
                 preventEvent(e);
 
                 autoToggle();
