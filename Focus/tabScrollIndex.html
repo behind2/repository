@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <link rel="stylesheet" type="text/css" href="http://mat1.gtimg.com/www/base/base.css">
+        <style type="text/css">
+            body {
+                color: #333;
+            }
+            body, h1, h2, h3, ul, li, dl, dt, dd, table, th, tr, td, ol, li, p, strong, img {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                border: none;
+            }
+            /*body{line-height:1.5em;background:url(http://mat1.gtimg.com/sports/2015nba/index/page_bg.jpg) center top no-repeat;}*/
+
+
+            /* focus */
+            .mod-focus .focus{width:580px;height:320px;overflow:hidden; zoom: 1;position: relative; }
+            .mod-focus ul{width:580px;height:320px;overflow:hidden;position:relative;left: 0;top: 0; }
+            .mod-focus li{width:580px;height:320px;float:left;position:absolute;left: 0; top: 0;}
+            .mod-focus li a{display:block;cursor:pointer;}
+            .mod-focus .tit{width:580px;position:absolute;left:0;bottom:35px;text-align:center;z-index:1;}
+            .mod-focus .tit a{color:#fff;}
+            .mod-focus .tit a:hover{text-decoration:none;}
+            .mod-focus .bg{width:580px;height:70px;position:absolute;left:0;;bottom:0;background:#000;opacity:0.7;filter:alpha(opacity=70);}
+            .mod-focus .foucsTit{width:580px;height:22px;left:0;position:absolute;bottom:3px;text-align:center;}
+            .mod-focus .foucsTit span{display:inline-block;width:7px;height:7px;margin: 0 5px;line-height:0;font-size:0;background:url(http://mat1.gtimg.com/sports/index2013/images/icons_v8.png) -160px -90px no-repeat;cursor:pointer;overflow:hidden;}
+            .mod-focus .foucsTit span.on{background:url(http://mat1.gtimg.com/sports/index2013/images/icons_v8.png) -170px -90px no-repeat;}
+            .mod-focus .focusBtnL,
+            .mod-focus .focusBtnR{width:40px;height:56px;padding:7px;margin-top:-70px;position:relative;z-index:1;}
+            .mod-focus .focusBtnL{float:left;}
+            .mod-focus .focusBtnR{float:right;}
+            .mod-focus .focusBtnL img{float:right;}
+            .mod-focus .focusBtnL img,
+            .mod-focus .focusBtnR img{display:none;cursor:pointer;}
+            .mod-focus .focusBtnL span,
+            .mod-focus .focusBtnR span{display:inline;width:23px;height:45px;margin:7px 5px 0;cursor:pointer;overflow:hidden;background:url(http://mat1.gtimg.com/sports/index2013/images/icons_v8.png) 0 0 no-repeat;}
+            .mod-focus .focusBtnL span{float:left;background-position:0 -90px;}
+            .mod-focus .focusBtnR span{float:right;background-position:-30px -90px;}
+            .mod-focus .focusBtnLHover span{background-position:-60px -90px;}
+            .mod-focus .focusBtnRHover span{background-position:-90px -90px;}
+            .mod-focus .focusBtnLHover,
+            .mod-focus .focusBtnRHover{width:146px;background:#408ED6;overflow:hidden;}
+            .mod-focus .focusBtnLHover img,
+            .mod-focus .focusBtnRHover img{display:inline;}
+
+            .mod-A{margin-top:10px;}
+            .mod-A .hd{padding:10px 0;height:24px;line-height:24px;}
+            .mod-A .hd .tit{font-weight:normal;color:#1544b3;font-family:"微软雅黑";font-size:18px;}
+            .mod-A .hd .tit a{color:#1544b3;}
+            .mod-A .hd .tit a:hover{color:#BC0904;}
+        </style>
+
+        <style type="text/css">
+            /* 隐藏插值表达式 */
+            .ms-controller{
+                visibility: hidden
+            }
+        </style>
+        <!-- 配置型 begin -->
+        <script type="text/javascript" data-main="main_test" src="http://cdn.bootcss.com/require.js/2.1.18/require.js"></script>
+        <script type="text/javascript" src="avalon.js"></script>
+        <script type="text/javascript">
+            requirejs.config({
+                paths: {
+                    jquery: 'jquery-1.11.2',
+                    tab_test: 'tab_test',
+                    // tab: 'tab',
+                    // scroll: 'scroll'
+                    focus: 'focus',
+                    test: 'amd_test'
+                }
+            });
+        </script>
+        <!-- 配置型 end -->
+        <!-- vm begin -->
+        <script type="text/javascript">
+            avalon.ready(function () {
+                vm = avalon.define({
+                    $id: 'global',
+                    message: '测试消息'
+                });
+                avalon.scan();
+            });
+
+            setTimeout(function () {
+                vm.$fire('message', '消息变了，哈哈哈！');
+            }, 5000);
+
+            setTimeout(function () {
+                vm.$fire('message', 'test');
+            }, 6000);
+
+            setTimeout(function () {
+                vm.message = '修改属性！！';
+            }, 7000);
+
+        </script>
+        <!-- vm end -->
+    </head>
+    <body ms-controller='global'>
+        <div class="mod-focus" id="containerId">
+            <div id="focus2" class="focus" bosszone="focus">
+                <ul class="focusImgs" id='focusImgs'  style="background-color: #131A2A">
+                    <li class="">
+                        <div class="bg"></div>
+                        <a href="http://sports.qq.com/a/20150604/009817.htm" target="_blank"><img width="580" height="320" src="http://img1.gtimg.com/sports/pics/hv1/45/231/1853/120550275.jpg" alt="骑士客场训练笑不停 欧文奇葩姿势练拉伸">
+                        </a>
+                        <h3 class="tit yh f18"><a href="http://sports.qq.com/a/20150604/009817.htm" target="_blank">备战总决赛-骑士训练全员欢乐无限</a></h3>
+
+                    </li>
+                    <li class="">
+                        <div class="bg"></div>
+                        <a href="http://sports.qq.com/a/20150604/011273.htm" target="_blank"><img width="580" height="320" src="http://img1.gtimg.com/sports/pics/hv1/208/234/1853/120551203.jpg" alt="“汤神库里PK三分" 勇士轻松备战总决赛"=""></a>
+                        <h3 class="tit yh f18"><a href="http://sports.qq.com/a/20150604/011273.htm" target="_blank">勇士轻松备战总决赛 库里汤神PK三分球</a></h3>
+                    </li>
+                    <li class="">
+                        <div class="bg"></div>
+                        <a href="http://sports.qq.com/a/20150604/007358.htm" target="_blank"><img width="580" height="320" src="http://img1.gtimg.com/sports/pics/hv1/172/197/1853/120541732.jpg" alt="“《总决赛球星PK》：替补大对决" 神经刀vs勇士圣盾"=""></a>
+                        <h3 class="tit yh f18"><a href="http://sports.qq.com/a/20150604/007358.htm" target="_blank">《总决赛球星PK》：替补大对决 神经刀vs勇士圣盾</a></h3>
+
+                    </li>
+                    <li class="">
+                        <div class="bg"></div>
+                        <a href="http://sports.qq.com/a/20150604/007827.htm#p=1" target="_blank"><img width="580" height="320" src="http://img1.gtimg.com/sports/pics/hv1/211/223/1853/120548401.jpg" alt="谁是真大腿？ 抱乔丹得戒指 信奥胖保底三连冠">
+                        </a>
+                        <h3 class="tit yh f18"><a href="http://sports.qq.com/a/20150604/007827.htm#p=1" target="_blank">谁是真大腿？ 抱乔丹得戒指 信奥胖保底三连冠</a></h3>
+
+                    </li>
+                    <li class="">
+                        <div class="bg"></div>
+                        <a href="http://sports.qq.com/a/20150604/015409.htm#p=1" target="_blank"><img width="580" height="320" src="http://img1.gtimg.com/sports/pics/hv1/33/8/1854/120558423.jpg" alt="NBA十大福将盘点：科比詹皇夺冠也要靠他们">
+                        </a>
+                        <h3 class="tit yh f18"><a href="http://sports.qq.com/a/20150604/015409.htm#p=1" target="_blank">NBA十大福将盘点：科比詹皇夺冠也要靠他们</a></h3>
+
+                    </li>
+                    <li class="">
+                        <div class="bg"></div>
+                        <a href="http://sports.qq.com/nbavideo/nbastarshow/index.htm" target="_blank"><img width="580" height="320" src="http://img1.gtimg.com/sports/pics/hv1/133/224/1853/120548578.jpg" alt="“库里腾空而出打破联盟战局 詹皇巅峰战役超级绝杀造经典">
+                        </a>
+                        <h3 class="tit yh f18"><a href="http://sports.qq.com/nbavideo/nbastarshow/index.htm" target="_blank">库里腾空而出打破联盟战局 詹皇巅峰战役超级绝杀造经典</a></h3>
+
+                    </li>
+                    <li class="">
+                        <div class="bg"></div>
+                        <a href="http://sports.qq.com/a/20150604/027408.htm#p=1" target="_blank"><img width="580" height="320" src="http://img1.gtimg.com/sports/pics/hv1/139/59/1854/120571534.jpg" alt="哈登床照遭嫩模曝光 夜店登再换绯闻女友">
+                        </a>
+                        <h3 class="tit yh f18"><a href="http://sports.qq.com/a/20150604/027408.htm#p=1" target="_blank">哈登床照遭嫩模曝光 夜店登再换绯闻女友</a></h3>
+
+                    </li>
+                    <li class="">
+                        <div class="bg"></div>
+                        <a href="http://mall.jd.com/view_page-20365603.html" target="_blank"><img width="580" height="320" src="http://img1.gtimg.com/sports/pics/hv1/141/250/1830/119059641.jpg" alt="乔丹风行4代轻透跑鞋">
+                        </a>
+                        <h3 class="tit yh f18"><a href="http://mall.jd.com/view_page-20365603.html" target="_blank">乔丹风行4代轻透跑鞋</a></h3>
+
+                    </li>
+                </ul>
+                <div class="foucsTit" id="foucsTit">
+                    <span class="on"></span>
+                    <span class=""></span>
+                    <span class=""></span>
+                    <span class=""></span>
+                    <span class=""></span>
+                    <span class=""></span>
+                    <span class=""></span>
+                    <span class=""></span>
+                </div>
+
+                <div class="focusBtnL" id="focusBtnL" bosszone="To1"><span></span><img width="100" height="56" src="http://img1.gtimg.com/sports/pics/hv1/133/224/1853/120548578.jpg" alt="">
+                </div>
+                <div class="focusBtnR" id="focusBtnR" bosszone="To2"><span></span><img width="100" height="56" src="http://img1.gtimg.com/sports/pics/hv1/141/250/1830/119059641.jpg" alt="">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- DOM begin -->
+        <div id='div01' style="width: 50px; height: 50px; background: lightblue;"></div>
+        <div id='div02' style="width: 50px; height: 50px; background: lightyellow;"></div>
+        <!-- DOM end -->
+        {{message}}
+
+ <!--        <script type="text/javascript">
+            var data = [{
+                href: 'http://sports.qq.com/a/20150604/009817.htm',
+                src: 'http://img1.gtimg.com/sports/pics/hv1/45/231/1853/120550275.jpg',
+                alt: '骑士客场训练笑不停 欧文奇葩姿势练拉伸',
+                title: '备战总决赛-骑士训练全员欢乐无限'
+            }, {
+                href: 'http://sports.qq.com/a/20150604/011273.htm',
+                src: 'http://img1.gtimg.com/sports/pics/hv1/208/234/1853/120551203.jpg',
+                alt: '汤神库里PK三分" 勇士轻松备战总决赛',
+                title: '勇士轻松备战总决赛 库里汤神PK三分球'
+            }, {
+                href: 'http://sports.qq.com/a/20150604/007358.htm',
+                src: 'http://img1.gtimg.com/sports/pics/hv1/172/197/1853/120541732.jpg',
+                alt: '《总决赛球星PK》：替补大对决" 神经刀vs勇士圣盾"',
+                title: '《总决赛球星PK》：替补大对决 神经刀vs勇士圣盾'
+            }, {
+                href: 'http://sports.qq.com/a/20150604/007827.htm#p=1',
+                src: 'http://img1.gtimg.com/sports/pics/hv1/211/223/1853/120548401.jpg',
+                alt: '谁是真大腿？ 抱乔丹得戒指 信奥胖保底三连冠',
+                title: '谁是真大腿？ 抱乔丹得戒指 信奥胖保底三连冠'
+            }, {
+                href: 'http://sports.qq.com/a/20150604/015409.htm#p=1',
+                src: 'http://img1.gtimg.com/sports/pics/hv1/33/8/1854/120558423.jpg',
+                alt: 'NBA十大福将盘点：科比詹皇夺冠也要靠他们',
+                title: 'NBA十大福将盘点：科比詹皇夺冠也要靠他们'
+            }, {
+                href: 'http://sports.qq.com/nbavideo/nbastarshow/index.htm',
+                src: 'http://img1.gtimg.com/sports/pics/hv1/133/224/1853/120548578.jpg',
+                alt: '库里腾空而出打破联盟战局 詹皇巅峰战役超级绝杀造经典',
+                title: '库里腾空而出打破联盟战局 詹皇巅峰战役超级绝杀造经典'
+            }, {
+                href: 'http://sports.qq.com/a/20150604/027408.htm#p=1',
+                src: 'http://img1.gtimg.com/sports/pics/hv1/139/59/1854/120571534.jpg',
+                alt: '哈登床照遭嫩模曝光 夜店登再换绯闻女友',
+                title: '哈登床照遭嫩模曝光 夜店登再换绯闻女友'
+            }, {
+                href: 'http://mall.jd.com/view_page-20365603.html',
+                src: 'http://img1.gtimg.com/sports/pics/hv1/141/250/1830/119059641.jpg',
+                alt: '乔丹风行4代轻透跑鞋',
+                title: '乔丹风行4代轻透跑鞋'
+            }];
+        </script> -->
+
+<!--         <script type="text/javascript">
+            require(['jquery', 'avalon', 'tab_test'], function ($, avalon, Tab) {
+                var component01 = new Tab({
+                    id: 'div01'
+                });
+
+                // console.log('***component01***');
+                // console.dir(component01);
+                // component01.setText();
+                // component01.setText();
+                component01.controller.setText();
+
+                vm.$watch('message', function () {
+                    vm.message = arguments[0];
+                    component01.controller.setText();
+                });
+            });
+        </script>
+
+        <script type="text/javascript">
+            require(['jquery', 'avalon', 'tab_test'], function ($, avalon, Tab) {
+                var componnet02 = new Tab({
+                    id: 'div02'
+                });
+                // console.log('***componnet02***');
+                // console.dir(componnet02);
+                componnet02.controller.setText();
+
+                vm.$watch('message', function () {
+                    vm.message = arguments[0];
+                    componnet02.controller.setText();
+                });
+            });
+        </script> -->
+
+  <!--       <script type="text/javascript">
+            require(['tab'], function (Tab) {
+                var tab01 = new Tab({
+                    tabId: 'foucsTit',
+                    tabTag: 'span',
+                    tabContentId: 'focusImgs',
+                    tabContentTag: 'li',
+                    currentStyle: 'on',
+                    eventType: 'mouseenter',//
+                    defShowTabIdx: 2,
+                    isAuto: true,
+                    timing: 3000,
+                    preBtnId: 'focusBtnL',
+                    nextBtnId: 'focusBtnR'
+                });
+            });
+        </script> -->
+
+        <script type="text/javascript">
+            require(['focus'], function (Focus) {
+                focus = new Focus({
+                    type: 'fade',
+                    tabId: 'foucsTit',
+                    tabTag: 'span',
+                    tabContentId: 'focusImgs',
+                    tabContentTag: 'li',
+                    isBuildTabTags: true,
+                    // tabUnit: '<span class=""></span>',
+                    currentStyle: 'on',
+                    // eventType: 'click',
+                    direction: 'next',
+                    defShowTabIdx: 0,
+                    isLoop: true,
+                    isAuto: true,
+                    timing: 3000,
+                    preBtnId: 'focusBtnL',
+                    nextBtnId: 'focusBtnR',
+                    switchBefore: function (index) {
+                        // console.log('switchBefore');
+                        // console.log(arguments);
+                        // console.dir(this);
+                    },
+                    switchAfter: function (index) {
+                        // console.log('switchAfter');
+                        // console.log(arguments);
+                        // console.dir(this);
+                    }
+                });
+            });
+        </script>
+
+<!--         <script type="text/javascript">
+            require(['jquery'], function ($) {
+                // console.log('here');
+                // console.dir(arguments);
+                // console.log(require('jquery'));
+
+                console.log(111);
+                $.ajax({
+                    url: 'http://nbachina.qq.com/static/data/league/dailyplayerleader_points.json',
+                    type: 'get',
+                    dataType: 'json'
+                    //context: _this
+                })
+
+            });
+        </script> -->
+    </body>
+</html>

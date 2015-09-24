@@ -29,7 +29,7 @@ define(['jquery'], function ($) {
          * version 版本号
          * @type {String}
          */
-        this.version = '1.1.0';
+        this.version = '1.1.1';
         /**
          * tabId 页卡容器ID
          * @type {String}
@@ -229,6 +229,10 @@ define(['jquery'], function ($) {
         // 当为滚动类型的焦点图时需要额外初始化
         if ( this.type === 'slide' ) {
             extraInit();
+        } else if ( this.type === 'fade' ) {
+            $( '#' + this.preBtnId ).css('zIndex', 101);
+            $( '#' + this.nextBtnId).css('zIndex', 101);
+            $( '#' + _this.tabId).css('zIndex', 101);
         }
 
     };
@@ -349,8 +353,10 @@ define(['jquery'], function ($) {
                             if ( index === _this.defShowTabIdx ) {
                                 $(ele).css({display: 'block', opacity: 1});// 初始化时, 直接显示就好了
                             } else {// 切换的时候
-                                _this.tabContentTags.eq(index).stop(true, true).css('display', 'block').animate({opacity: 1}, 600);
-                                _this.tabContentTags.eq(_this.defShowTabIdx).stop(true, true).animate({opacity: 0.6}, 600).css('display', 'none');
+                                _this.tabContentTags.eq(index).stop(true, true).css({display: 'block', zIndex: 100}).animate({opacity: 1}, 600);
+                                _this.tabContentTags.eq(_this.defShowTabIdx).stop(true, true).css('zIndex', 99).animate({opacity: 0.6}, 600, function () {
+                                    $(this).css('display', 'none');
+                                });
                             }
                         } else if ( _this.defShowTabIdx === idx ) {
                             // 什么都不做
