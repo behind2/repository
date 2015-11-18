@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript" src="idb.js"></script>
+</head>
+<body>
+
+    <div>
+        <!-- <img data-src="http://inews.gtimg.com/newsapp_ls/0/97126827/0?tp=webp" alt="我在测试呢" id="video_1"> -->
+
+        <img data-src="http://img.newyx.net/news_img/201306/20/1371714170_1812223777.gif" alt="我在测试呢" id="video_1">
+        -----------------
+        <!-- <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAADElEQVQImWNgoBMAAABpAAFEI8ARAAAAAElFTkSuQmCC"> -->
+    </div>
+
+    <script type="text/javascript">
+        var AIO_PICS = [{
+            id: 'video_1',
+            data: ''
+        }];
+    </script>
+
+    <script type="text/javascript">
+        var picToBase64 = function () {
+            var canvas, context, base64Str;
+                canvas = document.createElement('canvas');
+                context = canvas.getContext('2d');
+
+                console.log( context );
+
+
+            var img = document.getElementById('video_1');
+            var src = img.getAttribute('data-src');
+                img.src = src;
+
+            // var img = new Image();
+            //     img.setAttribute('crossOrigin', 'anonymous');
+            //     img.src = _src;
+
+
+                img.onload = function () {
+                    canvas.width = this.width;
+                    canvas.height = this.height;
+                    context.drawImage(img, 0, 0);
+                    base64Str = canvas.toDataURL('image/webp', 1);
+                    // base64Str = canvas.toDataURL('image/jpeg');
+                    console.log('<---base64Str--->');
+                    console.log( base64Str );
+                };
+        };
+
+        picToBase64();
+    </script>
+
+
+    <script>
+        IDB.domReady(function () {
+            if ( IDB.isSupported ) {
+                var db, name = 'AIO';
+                // var request = IDB.createIDBOpenReq('the_name');
+
+                var Reqsuccess = function (e) {
+                    db = e.target.result;
+                    // console.log( IDB.objectStoreCount(db) );
+
+                    var trans = IDB.getTransaction( db, 'customers', 'readwrite' );
+                    var store = IDB.getStoreViaTrans(trans, 'customers');
+                        console.log( store );
+
+                        // IDB.fetch( store, "444-44-4444", function (e) {
+                        //     console.log('成功了');
+                        //     console.log( e.target.result );
+                        // }, function () {
+                        //     console.log('？？');
+                        // } );
+
+                        // IDB.update( store, {ssn: '555-55-5555', name: 'behind111li', email: 'behindli@tencent.com', age: 26}, 'ssn', function (e) {
+                        //     console.log('成功了吗？');
+                        // } );
+
+                        // IDB.del( store, '555-55-5555' );
+
+                        // var data = [
+                        //       { ssn: "444-44-4444", name: "Bill", age: 35, email: "bill@company.com" },
+                        //       { ssn: "555-55-5555", name: "Donna", age: 32, email: "donna@home.org" }
+                        //     ];
+
+                        // for ( var i = 0; i < data.length; i ++ ) {
+                        //     IDB.add( store, data[i], function (e) {
+                        //         console.log('添加成功了么');
+                        //         console.log(e);
+                        //     } );
+                        // }
+
+                        // IDB.each(store, function (e) {
+                        //     var cursor = e.target.result;
+                        //     if (cursor) {
+                        //         console.log( 'key' + cursor.key );
+                        //         console.log( 'value' + cursor.value );
+
+                        //         cursor.continue();
+                        //     }
+                        // });
+
+
+                };
+                var Reqerror = function (e) {
+                    throw new Error( e.target.error.message );
+                };
+                var Requpgrade = function (e) {
+                    console.log('upgrade');
+                    // 制定存储对象
+                    // 索引
+                    // 存入固定的数据
+                };
+
+                // IDB.bindIDBOpenReq(request, Reqsuccess, Reqerror, Requpgrade);
+
+
+
+            } else {
+                throw new Error('IDB is not supported!');
+            }
+        });
+    </script>
+</body>
+</html>
