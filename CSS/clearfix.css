@@ -1,0 +1,2 @@
+.cf:after,.layout:after,.hd:after,.bd:after{content:"";display:table;clear:both;}
+.cf,.layout,.hd,.bd{*zoom:1;}
