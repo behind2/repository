@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+#cast {
+    float: left;
+    width: 760px;
+    height: 100px;
+    overflow: hidden;
+    border: 1px solid;
+}
+#container {
+    /*width:   10034px;*/
+    height: 100px;
+    border: 1px solid;
+}
+#container div {
+    float: left;
+    width: 150px;
+    height: 100px;
+    background: gray;
+    margin: 0 1px 0 1px;
+    cursor: pointer;
+}
+#LBtn {
+    float: left;
+    text-align: center;
+    width: 25px;
+    height: 100px;
+    line-height: 100px;
+    border: 1px solid;
+    cursor: pointer;
+}
+#RBtn {
+    float: left;
+    text-align: center;
+    width: 25px;
+    height: 100px;
+    line-height: 100px;
+    border: 1px solid;
+    cursor: pointer;
+}
+#container div.current {
+    /*border: 1px solid red;*/
+    background-color:  red;
+}
