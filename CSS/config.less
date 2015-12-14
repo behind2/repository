@@ -1,0 +1,68 @@
+@charset "gbk";
+
+
+@page_width: 1920px;
+@page_navi_height: 180px;
+@page_cast_height: 110px;
+@page_focus_height: 440px;// content 400px    tab 40px
+@page_news_height: 1010px;
+@page_hotvideos_height: 386px;
+@page_specialists_height: 260px;
+@page_deepNBA_height: 1072px;//
+@page_bestplayer_height: 500px;
+@page_superstar_height: 1072px;
+@page_teams_height: 1072px;
+@page_highpic_height: 516px;
+@page_footer_height: 415px;
+
+@banner_margin_height: 25px;
+
+@base_url: "../images/";
+
+
+.fs (@size:16px) {
+    font-size: @size;
+}
+
+.ff (@type:"Microsoft Yahei") {
+    font-family: @type;
+}
+
+.opacity (@num) {
+    filter: ~"alpha(opacity=@num)";
+    opacity: (@num / 100);
+}
+
+// 需要设置父容器哦
+.center (@width, @height) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -(@width / 2);
+    margin-top: -(@height / 2);
+}
+
+.clearfix () {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    *zoom: 1;
+}
+
+.transition (@rules) {
+    transition: @rules;
+    -webkit-transition: @rules;
+    -moz-transition: @rules;
+    -ms-transition: @rules;
+    -o-transition: @rules;
+}
+
+.transform (@rules) {
+    transform: @rules;
+    -webkit-transform: @rules;
+    -moz-transform: @rules;
+    -ms-transform: @rules;
+    -o-transform: @rules;
+}
