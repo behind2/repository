@@ -1,0 +1,56 @@
+
+// 静态资源路径
+// $static_url: './../images/';
+// 线上资源
+$static_url: 'http://mat1.gtimg.com/sports/images/img_r/behindli/';
+
+// 定义通栏宽高
+$width: 300px !default;
+$height: 100% !default;
+
+@mixin fs ($size: 16px) {
+    font-size: $size;
+}
+
+@mixin ff ($type: "Microsoft Yahei") {
+    font-family: $type;
+}
+
+@mixin opacity ($opacity) {
+    opacity: $opacity / 100;
+    filter: alpha(opacity=$opacity);
+}
+
+// 需要设置父容器哦
+@mixin center ($width, $height) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -($width / 2);
+  margin-top: -($height / 2);
+}
+
+@mixin clearfix () {
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    *zoom: 1;
+}
+
+@mixin transition ($rules...) {
+    transition: $rules;
+    -webkit-transition: $rules;
+    -moz-transition: $rules;
+    -ms-transition: $rules;
+    -o-transition: $rules;
+}
+
+@mixin transform ($rules...) {
+    transform: $rules;
+    -webkit-transform: $rules;
+    -moz-transform: $rules;
+    -ms-transform: $rules;
+    -o-transform: $rules;
+}
