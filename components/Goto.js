@@ -45,18 +45,23 @@ define(['jquery'], function ($) {
                 Goto.offsetTop = options.offsetTop || 0;
                 Goto.offsetLeft = options.offsetLeft || 0;
             },
-            goto: function (id) {
+            goto: function (id, fn) {
                 Goto.containerId = id || null;
-                var distant, target, y = Goto.util.getXYScroll()['y'];
+                var distant, target, y = Goto.util.getXYScroll().y;
                 if (id) {
-                    distant = Goto.util.getViewPosition(id)['top'] - Goto.offsetTop;// 返回窗口fixed位置
+                    distant = Goto.util.getViewPosition(id).top - Goto.offsetTop;// 返回窗口fixed位置
                     target = y + distant;
                 } else {
                     distant = y - Goto.offsetTop;// 返回顶部
                     target = 0;
                 }
-
-                Goto.scrollTarget.animate({scrollTop: target}, Goto.timing);
+                if (fn) {
+                    var dtd = $.Deferred();
+                        dtd.done(fn);
+                        Goto.scrollTarget.animate({scrollTop: target}, Goto.timing, function () { dtd.resolve(); });
+                } else {
+                    Goto.scrollTarget.animate({scrollTop: target}, Goto.timing);
+                }
             }
         }
     };
