@@ -2,13 +2,9 @@
 // 静态资源路径
 // $static_url: './../images/';
 // 线上资源
-$static_url: 'http://mat1.gtimg.com/sports/images/img_r/behindli/';
+$static_url: 'http://mat1.gtimg.com/sports/images/img_r/behindli/nbaschedule/';
 
-// 定义通栏宽高
-$width: 300px !default;
-$height: 100% !default;
-
-@mixin fs ($size: 16px) {
+@mixin fs ($size: 18px) {
     font-size: $size;
 }
 
@@ -54,3 +50,46 @@ $height: 100% !default;
     -ms-transform: $rules;
     -o-transform: $rules;
 }
+
+@mixin max-screen ($width...) {
+    @media screen and (max-width: $width) {
+        @content;
+    }
+}
+
+
+@mixin media-query ($args...) {
+    // width: $args;
+    // $num: length($args);
+    // @if $num == 1 {
+    //   with: 1;
+    // } @else if $num == 2 {
+    //   width: 2;
+    // }
+
+    $argsMap: keywords($args);
+    $num: length(map-keys($argsMap));
+    $min-width: map-get($argsMap, 'min-width');
+    $max-width: map-get($argsMap, 'max-width');
+
+    @if $num == 2 {
+        @media screen and (min-width: $min-width) and (max-width: $max-width) {
+            @content;
+        }
+    } @else {
+        @if $min-width {
+            @media screen and (min-width: $min-width) {
+                @content;
+            }
+        } @else {
+            @media screen and (max-width: $max-width) {
+                @content;
+            }
+        }
+    }
+
+}
+// 媒介查询的demo示例
+// @include media-query($min-width: 250px, $max-width: 500px) {
+//   body {color: red;}
+// };
