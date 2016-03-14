@@ -59,13 +59,6 @@ $static_url: 'http://mat1.gtimg.com/sports/images/img_r/behindli/nbaschedule/';
 
 
 @mixin media-query ($args...) {
-    // width: $args;
-    // $num: length($args);
-    // @if $num == 1 {
-    //   with: 1;
-    // } @else if $num == 2 {
-    //   width: 2;
-    // }
 
     $argsMap: keywords($args);
     $num: length(map-keys($argsMap));
@@ -93,3 +86,4 @@ $static_url: 'http://mat1.gtimg.com/sports/images/img_r/behindli/nbaschedule/';
 // @include media-query($min-width: 250px, $max-width: 500px) {
 //   body {color: red;}
 // };
+// http://sass-lang.com/documentation/Sass/Script/Functions.html#keywords-instance_method
