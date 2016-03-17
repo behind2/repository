@@ -1,0 +1,6 @@
+/**
+ * Tips&&Trick
+ * 1.主体元素（指的是需要居中的图片）inline-block化.
+ * 2.宽度为0, 高度为100%的辅助元素, span, i, u, em
+ * 3.重头戏 设置主体元素与辅助元素的vertical-align: middle
+ */
