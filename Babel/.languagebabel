@@ -1,0 +1,18 @@
+{
+  "projectRoot":                      true,//根路径
+  "babelMapsPath":                    "",//调试文件
+  "babelMapsAddUrl":                  false,
+  "babelSourcePath":                  "",//源文件
+  "babelTranspilePath":               "scripts",//需要去掉  编译后的路径
+  "createMap":                        false,
+  "createTargetDirectories":          false,
+  "createTranspiledCode":             true,
+  "disableWhenNoBabelrcFileInPath":   true,
+  "suppressSourcePathMessages":       false,
+  "suppressTranspileOnSaveMessages":  false,
+  "transpileOnSave":                  true
+}
+
+
+//官网例子https://github.com/gandm/language-babel
+//demo https://github.com/gandm/example-language-babel
