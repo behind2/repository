@@ -38,6 +38,9 @@ var config = {
     }, {
       test: /\.scss$/,
       loader: 'style!css!sass'
+    }, {
+      test: /\.(png|jpg)$/,
+      loader: 'url?limit=25000'
     }]
   }
 };
