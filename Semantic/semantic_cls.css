@@ -1,0 +1,15 @@
+/*
+  在semantic中, 我调整了top aligned 与 aligned top的顺序,
+  为什么就不生效了呢？
+  原因是此处使用的不是类名选择器，
+  @tips
+  @url http://www.w3chtml.com/css3/selectors/attribute/att6.html
+  而是使用了CSS3 属性选择符
+  @demo
+  E[att*="val"]{ css rules }
+  @description
+  选择具有att属性且属性值为包含val的字符串的E元素。
+  @ps
+  字符串值前后顺序不能发生改变
+  @run code 一下
+ */
