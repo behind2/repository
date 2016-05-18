@@ -22,17 +22,24 @@ alter_specification:
         FOREIGN KEY [index_name] (index_col_name,...)
         reference_definition
   | ALGORITHM [=] {DEFAULT|INPLACE|COPY}
+  ##############################################################
   | ALTER [COLUMN] col_name {SET DEFAULT literal | DROP DEFAULT}
-  # 修改字段默认值
+  # 修改字段默认值/删除字段默认值
   # ALTER col_name 字段  SET DEFAULT literal 给指定字段设置默认值
   #                      DROP DEFAULT        删除指定字段设置默认值
+  ##############################################################
   | CHANGE [COLUMN] old_col_name new_col_name column_definition
         [FIRST|AFTER col_name]
+  # 改变新旧字段, 设置新旧字段类型
   # CHANGE          old_col_name 旧字段 new_col_name 新字段 column_definition 字段类型
+  ##############################################################
   | LOCK [=] {DEFAULT|NONE|SHARED|EXCLUSIVE}
+  ##############################################################
   | MODIFY [COLUMN] col_name column_definition
         [FIRST | AFTER col_name]
+  # 修改现有字段类型
   # MODIFY          col_name 字段     column_definition 字段类型
+  ##############################################################
   | DROP [COLUMN] col_name
   | DROP PRIMARY KEY
   | DROP {INDEX|KEY} index_name
