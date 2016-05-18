@@ -4,8 +4,12 @@ ALTER [IGNORE] TABLE tbl_name
 
 alter_specification:
     table_options
+  ##############################################################
   | ADD [COLUMN] col_name column_definition
         [FIRST | AFTER col_name ]
+  # 增加字段
+  # ADD       col_name 字段 column_definition 字段类型
+  ##############################################################
   | ADD [COLUMN] (col_name column_definition,...)
   | ADD {INDEX|KEY} [index_name]
         [index_type] (index_col_name,...) [index_option] ...
@@ -41,8 +45,13 @@ alter_specification:
   # MODIFY          col_name 字段     column_definition 字段类型    [NOT NULL] DEFAULT VALUE
   ##############################################################
   | DROP [COLUMN] col_name
+  ##############################################################
   | DROP PRIMARY KEY
+  # 删除表的主键
+  ##############################################################
   | DROP {INDEX|KEY} index_name
+  # 删除 索引或键 字段名分
+  ##############################################################
   | DROP FOREIGN KEY fk_symbol
   | DISABLE KEYS
   | ENABLE KEYS
