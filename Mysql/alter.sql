@@ -38,7 +38,7 @@ alter_specification:
   | MODIFY [COLUMN] col_name column_definition
         [FIRST | AFTER col_name]
   # 修改现有字段类型
-  # MODIFY          col_name 字段     column_definition 字段类型
+  # MODIFY          col_name 字段     column_definition 字段类型    [NOT NULL] DEFAULT VALUE
   ##############################################################
   | DROP [COLUMN] col_name
   | DROP PRIMARY KEY
