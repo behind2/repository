@@ -35,7 +35,8 @@ alter_specification:
   | CHANGE [COLUMN] old_col_name new_col_name column_definition
         [FIRST|AFTER col_name]
   # 改变新旧字段, 设置新旧字段类型
-  # CHANGE          old_col_name 旧字段 new_col_name 新字段 column_definition 字段类型
+  # CHANGE          old_col_name 旧字段 new_col_name 新字段 column_definition 字段类型  [NOT NULL] AUTO_INCREMENT = 1
+  # alter table table_name表名 auto_increment = 1初始值;
   ##############################################################
   | LOCK [=] {DEFAULT|NONE|SHARED|EXCLUSIVE}
   ##############################################################
