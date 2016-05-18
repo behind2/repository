@@ -23,6 +23,9 @@ alter_specification:
         reference_definition
   | ALGORITHM [=] {DEFAULT|INPLACE|COPY}
   | ALTER [COLUMN] col_name {SET DEFAULT literal | DROP DEFAULT}
+  # 修改字段默认值
+  # ALTER col_name 字段  SET DEFAULT literal 给指定字段设置默认值
+  #                      DROP DEFAULT        删除指定字段设置默认值
   | CHANGE [COLUMN] old_col_name new_col_name column_definition
         [FIRST|AFTER col_name]
   # CHANGE          old_col_name 旧字段 new_col_name 新字段 column_definition 字段类型
