@@ -9,8 +9,9 @@ alter_specification:
         [FIRST | AFTER col_name ]
   # 增加字段
   # ADD       col_name 字段 column_definition 字段类型
-  ##############################################################
+  # 批量增加字段
   | ADD [COLUMN] (col_name column_definition,...)
+  ##############################################################
   | ADD {INDEX|KEY} [index_name]
         [index_type] (index_col_name,...) [index_option] ...
   | ADD [CONSTRAINT [symbol]] PRIMARY KEY
