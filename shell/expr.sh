@@ -7,5 +7,6 @@
 # 运算符的左右两边必须是空格
 # (注意运算符左右都有空格 ，如果没有空格表示是字符串连接) 
 # 
-#expr命令一般用于`整数值`，但也可用于字符串
-#expr argument operator argument 
+expr命令一般用于`整数值`，但也可用于字符串
+expr argument operator argument 
+
