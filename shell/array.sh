@@ -7,3 +7,7 @@
 # value2
 # value3
 # )
+# or
+# array_name[0]=value0
+# array_name[1]=value1
+# array_name[n]=valuen
