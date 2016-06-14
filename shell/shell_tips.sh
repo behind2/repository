@@ -5,6 +5,7 @@
 # 		awk 以空格为分割域时，是以单个或多个连续的空格为分隔符的；
 # 		cut则是以单个空格作为分隔符。
 # sed				行处理命令
+# 					@quote http://www.cnblogs.com/ggjucheng/archive/2013/01/13/2856901.html
 # cat				串连接后传到基本输出
 
 # 要想使shell命令正确执行, 使用$( command ) 相当于`command`命令，返回括号中命令执行的结果
