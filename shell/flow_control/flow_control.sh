@@ -11,3 +11,15 @@ if [ condition ]; then
 	else
 	# statements
 fi
+
+# 多分支if条件语句
+if [ condition1 ]; then
+	#statements
+elif [ condition2 ]; then
+	#statements
+	.
+	.
+	.
+else
+	当所有条件都不成立时, 最后执行此程序
+fi
