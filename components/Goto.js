@@ -71,6 +71,7 @@ define(['jquery'], function ($) {
 
 /**
  * 1.Element.scrollHeight是计量元素`内容`高度的只读属性, 包括overflow样式属性导致的视图中不可见内容
- *
- *
+ * @ref https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollHeight
+ * 2.Element.scrollTop属性可以设置或者获取一个元素距离他容器顶部的像素距离
+ * @ref https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollTop
  */
