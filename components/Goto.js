@@ -68,3 +68,9 @@ define(['jquery'], function ($) {
 
     return Goto;
 });
+
+/**
+ * 1.Element.scrollHeight是计量元素`内容`高度的只读属性, 包括overflow样式属性导致的视图中不可见内容
+ *
+ *
+ */
