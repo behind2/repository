@@ -1,18 +1,18 @@
 case 变量 in
 	pattern1 )
-		command1
-		command2
+		command1;
+		command2;
 		...
-		commandN
+		commandN;
 		;;
 	pattern2 )
-		command1
-		command2
+		command1;
+		command2;
 		...
-		commandN
+		commandN;
 		;;
 	* )
-		commandDef
+		commandDef;
 		;;
 esac
 
