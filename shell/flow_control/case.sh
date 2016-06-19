@@ -1,3 +1,4 @@
+# 流程控制语句
 case 变量 in
 	pattern1 )
 		command1;
