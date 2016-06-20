@@ -23,3 +23,14 @@ show create {database | schema} [if not exists] db_name
 -- 修改数据库
 alter {database | schema} [db_name]
 [default] character set [=] charset_name
+
+
+-- std
+ALTER {DATABASE | SCHEMA} [db_name]
+    alter_specification ...
+ALTER {DATABASE | SCHEMA} db_name
+    UPGRADE DATA DIRECTORY NAME
+
+alter_specification:
+    [DEFAULT] CHARACTER SET [=] charset_name
+  | [DEFAULT] COLLATE [=] collation_name
