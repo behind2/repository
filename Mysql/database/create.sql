@@ -2,6 +2,13 @@
 create {database | schema} [if not exists] db_name
 [default] character set [=] charset_name
 
+CREATE {DATABASE | SCHEMA} [IF NOT EXISTS] db_name
+    [create_specification] ...
+
+create_specification:
+    [DEFAULT] CHARACTER SET [=] charset_name
+  | [DEFAULT] COLLATE [=] collation_name
+
 
 -- 查看数据库列表
 show {databases | schemas}
@@ -10,12 +17,5 @@ show {databases | schemas}
 -- 查看警告信息
 show warnings
 
-
--- std
-
-CREATE {DATABASE | SCHEMA} [IF NOT EXISTS] db_name
-    [create_specification] ...
-
-create_specification:
-    [DEFAULT] CHARACTER SET [=] charset_name
-  | [DEFAULT] COLLATE [=] collation_name
+-- 查看创建数据库时的相关设置
+show create {database | schema} [if not exists] db_name
