@@ -34,3 +34,7 @@ ALTER {DATABASE | SCHEMA} db_name
 alter_specification:
     [DEFAULT] CHARACTER SET [=] charset_name
   | [DEFAULT] COLLATE [=] collation_name
+
+
+-- 删除数据库
+drop {database | schema} [if exists] db_name
