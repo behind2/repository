@@ -20,6 +20,7 @@ netstat [-options]
 		-l: 仅列出在监听状态的网络服务
 		-a: 列出所有的网络连接
 
+# ps linux连接数为0-255个, windows的2-4个(旧版本)
 # 登入
 login
 # 登出
