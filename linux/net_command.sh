@@ -22,6 +22,17 @@ netstat [-options]
 
 		-rn: 列出路由列表, 功能和route命令一致
 
+# 查看路由列表(可以看到网关)
+route -n
+
+# 临时设定网关
+route add default gw <网关>
+# 临时删除网关
+route del default gw <网关>
+
+# 域名与ip地址解析
+nslookup [主机名或ip]
+
 # ps linux连接数为0-255个, windows的2-4个(旧版本)。
 # 登入
 login
