@@ -18,3 +18,19 @@ rpm -e 包名
 -options
 	-e (erase) 卸载
 	--nodeps 不检测依赖性
+
+
+# rpm 查询命令
+rpm -q 包名
+# 查询包是否安装
+	-q (query) 查询
+	-a (all) 所有
+
+
+# rpm 查询软件包详细信息
+rpm -qi 包名
+	-i (information) 查询软件信息
+	-p (package) 查询未安装包信息
+
+
+# 
