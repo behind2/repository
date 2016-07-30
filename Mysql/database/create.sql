@@ -2,6 +2,7 @@
 create {database | schema} [if not exists] db_name
 [default] character set [=] charset_name
 
+-- std
 CREATE {DATABASE | SCHEMA} [IF NOT EXISTS] db_name
     [create_specification] ...
 
