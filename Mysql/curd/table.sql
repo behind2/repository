@@ -49,4 +49,7 @@ auto_increment
 -- 4.外键列和参照列必须创建索引. 如果外键列不存在索引的话, mysql将自动创建索引
 
 -- mysql 配置文件 my.ini
-default-storage-engine=INNODB
+default-storage-engine=INNODB;
+
+-- 查看数据表的索引
+show indexes from tbl_name;
