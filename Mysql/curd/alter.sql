@@ -9,6 +9,9 @@ alter_specification:
         [FIRST | AFTER col_name ]
   # 增加字段
   # ADD       col_name 字段 column_definition 字段类型
+  # [FIRST | AFTER col_name ]
+  # 用于调整字段的前后顺序. FIRST最前方. AFTER表示在某一列(col_name)的后面
+  # 
   # 批量增加字段
   | ADD [COLUMN] (col_name column_definition,...)
   ##############################################################
