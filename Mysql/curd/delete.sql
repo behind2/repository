@@ -1,0 +1,1 @@
+delete from tbl_name [where where_condition]
