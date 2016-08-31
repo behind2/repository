@@ -1,8 +1,10 @@
 
 INSERT [LOW_PRIORITY | DELAYED | HIGH_PRIORITY] [IGNORE]
     [INTO] tbl_name
+    -- into 可以省略
     [PARTITION (partition_name,...)]
     [(col_name,...)]
+    -- 注意里面的圆括号, 要带着哦
     {VALUES | VALUE} ({expr | DEFAULT},...),(...),...
     [ ON DUPLICATE KEY UPDATE
       col_name=expr
