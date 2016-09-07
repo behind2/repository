@@ -29,3 +29,8 @@ SELECT
       | INTO DUMPFILE 'file_name'
       | INTO var_name [, var_name]]
     [FOR UPDATE | LOCK IN SHARE MODE]]
+
+-- subquery 子查询关键字
+(两者之间等价)
+ANY SOME (subquery)
+ALL (subquery)
