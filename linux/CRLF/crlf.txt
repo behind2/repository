@@ -1,0 +1,7 @@
+CRLF来历
+\r 回车符 CR用符号'\r'表示
+\n 换行符 LF用符号'\n'表示
+
+/**
+ * @quote http://sphenginx.github.io/2014/12/24/CRLF-in-Unix-like_Windows-os/
+ */
