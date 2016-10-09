@@ -10,4 +10,7 @@ routine_body
 3. 函数体如果为复合结构则使用begin...end语句.
 4. 复合结构可以包含声明, 循环, 控制结构.
 
---
+-- demo 不带参数的函数
+create function f1() returns varchar(30)
+return date_format(now(), '%Y年%m月%d日 %H点:%i分:%s秒');
+
