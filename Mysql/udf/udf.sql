@@ -29,6 +29,7 @@ delimiter symbol
 -- demo
 delimiter //
 create function adduser(username varchar(20))
+returns int(10) unsigned
 begin
 insert test (username) values (username);
 return last_insert_id();
