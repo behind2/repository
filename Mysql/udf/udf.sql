@@ -14,3 +14,10 @@ routine_body
 create function f1() returns varchar(30)
 return date_format(now(), '%Y年%m月%d日 %H点:%i分:%s秒');
 
+-- demo 带参数的函数
+create function f2(num1 smallint unsigned, num2 smallint unsigned)
+returns float(10, 2) unsigned
+return (num1 + num2) / 2;
+
+-- 删除函数
+drop function f2;
