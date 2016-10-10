@@ -21,3 +21,16 @@ return (num1 + num2) / 2;
 
 -- 删除函数
 drop function f2;
+
+-- 创建具有 复合结构函数体 的自定义函数
+delimiter告诉mysql解释器, 该段命令是否结束了, mysql是否可以执行了. 默认情况下, delimiter是分号`;`.
+delimiter symbol
+
+-- demo
+delimiter //
+create function adduser(username varchar(20))
+begin
+insert test (username) values (username);
+return last_insert_id();
+end
+//
