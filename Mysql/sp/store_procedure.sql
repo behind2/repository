@@ -29,3 +29,10 @@ characteristic:
 
 routine_body:
     Valid SQL routine statement
+
+
+-- 存储过程与自定义函数比较相似
+-- 过程体由合法的SQL语句构成
+-- 过程体可以是任意SQL语句
+-- 过程体如果为复合结构则使用BEGIN...END语句
+-- 复合结构可以包含声明，循环，控制结构
