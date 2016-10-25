@@ -36,3 +36,14 @@ routine_body:
 -- 过程体可以是任意SQL语句
 -- 过程体如果为复合结构则使用BEGIN...END语句
 -- 复合结构可以包含声明，循环，控制结构
+
+-- demo
+create procedure sp1() select version();
+
+-- 调用存储过程
+call sp_name([parameter[,...]])
+call sp_name[()]
+
+-- demo
+call sp1;
+call sp1();
