@@ -50,3 +50,6 @@ call sp1();
 
 
 -- 创建带有IN类型参数的存储过程
+-- demo
+delimiter //
+create procedure removeUserById(in id int unsigned)
