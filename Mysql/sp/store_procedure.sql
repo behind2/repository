@@ -47,3 +47,6 @@ call sp_name[()]
 -- demo
 call sp1;
 call sp1();
+
+
+-- 创建带有IN类型参数的存储过程
