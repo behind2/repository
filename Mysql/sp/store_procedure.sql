@@ -52,14 +52,16 @@ call sp1();
 -- 创建带有IN类型参数的存储过程
 -- demo
 delimiter //
-create procedure removeUserById(in id int unsigned)
+create procedure removeUserById(in p_id int unsigned)
 begin
-delete from users where id = id;
+delete from users where id = p_id;
 end
 //
 delimiter ;
 -- ps: 1.此处注意形参不能与数据表的field/column 重复产生歧义
 --     2.不能删除过程体. 只有先删除存储过程, 然后新建
+
+drop procedure [if exists] sp_name;
 
 -- demo 调用
 call removeUserById(3);
