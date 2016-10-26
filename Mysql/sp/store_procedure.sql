@@ -53,3 +53,13 @@ call sp1();
 -- demo
 delimiter //
 create procedure removeUserById(in id int unsigned)
+begin
+delete from users where id = id;
+end
+//
+delimiter ;
+-- ps: 1.此处注意形参不能与数据表的field/column 重复产生歧义
+--     2.不能删除过程体. 只有先删除存储过程, 然后新建
+
+-- demo 调用
+call removeUserById(3);
