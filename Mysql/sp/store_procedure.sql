@@ -65,3 +65,23 @@ drop procedure [if exists] sp_name;
 
 -- demo 调用
 call removeUserById(3);
+
+
+-- 创建带有IN和OUT类型参数的存储过程
+delimiter //
+create procedure removeUserAndReturnUserNums(in p_id int unsigned, out userNums int unsigned)
+begin
+delete from users where id = p_id;
+select count(id) from users into userNums;
+end
+//
+delimiter ;
+
+call removeUserAndReturnUserNums(27, @nums);
+
+select @nums;
+-- 查看返回值
+set @i = 7;
+-- 设置用户变量
+
+-- 创建带有多个OUT类型参数的存储过程
