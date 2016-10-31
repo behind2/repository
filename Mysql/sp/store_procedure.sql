@@ -102,3 +102,6 @@ delimiter ;
 call removeUserByAgeAndReturnInfos(23, @a, @b);
 
 select @a, @b;
+
+-- 句法
+SELECT col_name[,...] INTO var_name[,...] table_expr
