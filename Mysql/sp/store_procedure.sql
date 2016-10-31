@@ -84,4 +84,21 @@ select @nums;
 set @i = 7;
 -- 设置用户变量
 
+-- 内置函数row_count()
+-- demo
+select row_count();
+
 -- 创建带有多个OUT类型参数的存储过程
+delimiter //
+create procedure removeUserByAgeAndReturnInfos(in p_age smallint unsigned, out deleteUsers smallint unsigned, out userCounts smallint unsigned)
+begin
+delete from users where age = p_age;
+select row_count() into deleteUsers;
+select count(id) from users into userCounts;
+end
+//
+delimiter ;
+
+call removeUserByAgeAndReturnInfos(23, @a, @b);
+
+select @a, @b;
