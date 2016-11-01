@@ -1,4 +1,5 @@
 -- 存储过程与自定义函数
+-- 存储过程：是SQL语句和控制语句的预编译集合，以一个名称存储并作为一个单元处理
 
 CREATE
     [DEFINER = { user | CURRENT_USER }]
