@@ -105,3 +105,18 @@ select @a, @b;
 
 -- 句法
 SELECT col_name[,...] INTO var_name[,...] table_expr
+
+-- 存储过程与自定义函数的区别
+-- 存储过程实现的功能要复杂些，而函数的针对性更强
+-- 存储过程可以返回多个值，函数只能有一个返回值
+-- 存储过程一般独立的来执行，而函数可以作为其他SQL语句的组成部分来出现
+
+
+-- 修改存储过程
+alter procedure sp_name [characteristic ...]
+comment `string`
+| {CONTAINS SQL | NO SQL | READS SQL DATA | MODIFIES SQL DATA}
+| SQL SECURITY {DEFINER | INVOKER}
+
+-- 删除存储过程
+drop procedure [if exists] sp_name
