@@ -33,4 +33,23 @@ rpm -qi 包名
 	-p (package) 查询未安装包信息
 
 
-#
+# 查询包中文件安装位置
+rpm -ql	包名
+	-l (list, location) 列表
+	-p (package) 查询未安装包信息
+
+# rpm包默认安装路径
+/etc/ 						配置文件安装目录
+/usr/bin/					可执行命令安装目录
+/usr/lib/					程序所使用的函数库保存位置
+/usr/share/doc/		基本软件使用手册保存位置
+/usr/share/man/		帮助文件保存位置
+
+# 查询系统文件属于哪个rpm包
+rpm -qf	系统文件名
+	-f (file) 查询系统文件属于哪个软件包(file)
+
+# 查询软件包的依赖性
+rpm -qR 包名
+	-R (requires) 查询软件包的依赖性
+	-p (package) 查询未安装包信息
