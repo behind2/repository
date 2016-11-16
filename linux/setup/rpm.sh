@@ -53,3 +53,10 @@ rpm -qf	系统文件名
 rpm -qR 包名
 	-R (requires) 查询软件包的依赖性
 	-p (package) 查询未安装包信息
+
+# rpm包校验
+rpm -V 已安装的包名
+	-V (verify) 校验指定rpm包中的文件
+
+# rpm包中文件提取
+
