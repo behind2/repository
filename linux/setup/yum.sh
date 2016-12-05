@@ -15,3 +15,23 @@ yum -y install 包名
   -y 自动回答yes
 # eg
 # yum -y install gcc  # C语言编译器
+
+# 升级
+yum -y update 包名
+  update 升级
+  -y 自动回答yes
+
+# 卸载
+yum -y remove 包名
+  remove 卸载
+  -y 自动回答yes
+
+# yum 软件组管理命令
+yum grouplist
+# 列出所有可用的软件组列表
+
+yum groupinstall 软件组名
+# 安装指定软件组，组名可以由grouplist查询出来
+
+yum groupremove 软件组名
+# 卸载指定软件组
