@@ -1,0 +1,5 @@
+/**
+ * @quote http://www.cnblogs.com/kingcat/archive/2012/10/16/2726334.html
+ * EF BB BF 表示UTF-8
+ * FE FF 表示UTF-16.
+ */
