@@ -18,3 +18,5 @@
 # make 编译
 # make clean
 # make install 编译安装
+#
+# 脚本安装包
