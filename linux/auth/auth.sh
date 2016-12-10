@@ -38,3 +38,20 @@
 #
 # 永久修改
 # vim /etc/profile    环境变量配置文件
+#
+# 特殊权限
+# ACL权限解决用户身份不足的缺陷
+# 临时开启分区ACL权限
+# dumpe2fs -h /dev/sda5
+# dumpe2fs 命令是查询指定分区详细文件系统信息的命令
+# 选项
+#   -h  仅显示超级块中信息, 而不显示磁盘块组的详细信息
+#
+# 临时开启分区ACL权限
+# mount -o remount, acl /
+# 重新挂载跟分区, 并挂载加入acl权限
+#
+# 永久开启分区ACL权限
+# vim /etc/fstab
+# mount -o remount /
+# 重新挂载文件系统或重启动系统, 使修改生效
