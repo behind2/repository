@@ -12,3 +12,6 @@ set global long_query_time=1
 -- @quote http://www.cnblogs.com/stevendes/p/4332344.html
 show variables like 'slow_query_log';
 
+
+-- mysql慢查日志分析工具mysqldumpslow(与mysql一起被安装)
+
