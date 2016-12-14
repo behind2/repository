@@ -15,4 +15,10 @@ show variables like 'slow_query_log';
 
 -- mysql慢查日志分析工具mysqldumpslow(与mysql一起被安装)
 -- mysql慢查日志分析工具pt-query-digest
+-- 1. 查询次数多且每次查询占用时间长的sql
+--    通常为pt-query-digest分析的前几个查询
+-- 2. IO大的sql
+--    注意pt-query-digest分析中的Rows examine项
+-- 3. 未命中索引的sql
+--    注意pt-query-digest分析中的Rows examine 和 Rows Send的对比
 
