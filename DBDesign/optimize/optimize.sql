@@ -14,4 +14,5 @@ show variables like 'slow_query_log';
 
 
 -- mysql慢查日志分析工具mysqldumpslow(与mysql一起被安装)
+-- mysql慢查日志分析工具pt-query-digest
 
