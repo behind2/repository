@@ -51,7 +51,26 @@
 # mount -o remount, acl /
 # 重新挂载跟分区, 并挂载加入acl权限
 #
+#########################################################
+#
 # 永久开启分区ACL权限
 # vim /etc/fstab
 # mount -o remount /
 # 重新挂载文件系统或重启动系统, 使修改生效
+#
+# 查看ACL权限
+# getfacl 文件名
+# 设定ACL权限
+# setfacl 选项 文件名
+# 选项
+# -m 设定ACL权限
+# -x 删除指定ACL权限
+# -b 删除所有ACL权限
+# -d 设定默认ACL权限
+# -k 删除默认ACL权限
+# -R 递归设定ACL权限
+#
+# setfacl -m u:lw:rx av
+# setfacl -m (用户:用户名:权限) 目录
+# setfacl -m g:tgroup2:rwx av
+# setfacl -m (组:组名:权限) 目录
