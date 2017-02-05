@@ -6,7 +6,7 @@
 
 # demo
 # root  ALL=(ALL)   ALL
-# 用户名   被管理主机的地址=（可使用的身份）授权命令（绝对路径）
+# 用户名（可以使用sudo的用户）   被管理主机的地址=（可使用的身份）授权命令（绝对路径）
 # user1   ALL=(ALL)   /sbin/shutdown
 #
 #
