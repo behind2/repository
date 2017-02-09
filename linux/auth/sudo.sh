@@ -15,4 +15,21 @@
 
 # su - user1  切换用户
 # sudo -l 查看可用的sudo命令
+
+
+
+
+
+
+# 文件特殊权限
+# SetUID
+# 详见
+# ll /etc/shadow
+# ll /usr/bin/passwd 拥有s权限, s = S + x, (s权限等于大S权限加执行权限)
+#
+# SetGID
+#
+#
+# Sticky BIT
+#
 #
