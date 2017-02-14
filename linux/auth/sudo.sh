@@ -27,6 +27,14 @@
 # ll /etc/shadow
 # ll /usr/bin/passwd 拥有s权限, s = S + x, (s权限等于大S权限加执行权限)
 #
+# 设定SetUID的方法
+# 4代表SUID
+#   chmod 4755 文件名
+#   chmod u + s 文件名
+# 取消SetUID的方法
+#   chmod 0755 文件名
+#   chmod u - s 文件名
+#
 # SetGID
 #
 #
