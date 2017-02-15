@@ -36,7 +36,12 @@
 #   chmod u - s 文件名
 #
 # SetGID
-#
+# 2代表SGID
+#   chmod 2755 文件名
+#   chmod g + s 文件名
+# 取消SetGID
+#   chmod 0755 文件名
+#   chmod g - s 文件名
 #
 # Sticky BIT
 #
