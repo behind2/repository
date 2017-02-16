@@ -43,6 +43,13 @@
 #   chmod 0755 文件名
 #   chmod g - s 文件名
 #
-# Sticky BIT
+# Sticky BIT(针对目录生效)
+# 设置取消粘着位
+# 设置粘着位
+#   chmod 1757 目录名
+#   chmod o + t 目录名
 #
+# 取消粘着位
+#   chmod 0777 目录名
+#   chmod o - t 目录名
 #
