@@ -53,3 +53,20 @@
 #   chmod 0777 目录名
 #   chmod o - t 目录名
 #
+# 不可改变位权限(chattr)
+# chattr命令格式
+# chattr [+-=] [选项] 文件或目录名
+#         +:增加权限
+#         -:删除权限
+#         =:等于某权限
+#
+#         a:(append) 追加vi变得不可用
+#         i:(immutable) 插入
+# demo
+#   chattr +i abc
+#   lsattr abc
+# 查看文件系统属性
+#   lsattr 选项 文件名
+#          -a 显示所有文件和目录
+#          -d 若目标是目录, 仅列出目录本身的属性, 而不是子文件的
+#
