@@ -26,3 +26,17 @@
 #
 # 查看crontab日志
 # tail -f /var/log/cron
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+# 配置文件
+# /etc/crontab
+# crontab日志
+# /var/log/cron文件, 保存crontab的任务执行记录
