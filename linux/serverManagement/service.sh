@@ -32,3 +32,9 @@ netstat -tlunp
   # -p 列出该服务的进程ID(PID)
 
   # 会列出系统中所有的已经启动的服务
+
+
+
+  # RPM包服务管理
+  # 源码包安装在指定位置, 一般是/usr/local/ 【unix system resource, 即Unix系统资源的缩写】
+  # RPM包安装在默认位置
