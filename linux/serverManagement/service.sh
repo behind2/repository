@@ -35,6 +35,14 @@ netstat -tlunp
 
 
 
-  # RPM包服务管理
-  # 源码包安装在指定位置, 一般是/usr/local/ 【unix system resource, 即Unix系统资源的缩写】
-  # RPM包安装在默认位置
+# RPM包服务管理
+# 源码包安装在指定位置, 一般是/usr/local/ 【unix system resource, 即Unix系统资源的缩写】
+# RPM包安装在默认位置
+
+
+# RPM包服务管理【独立的服务启动】(绝对路径)
+/etc/init.d/<独立服务名>
+# start | stop | status | restart
+
+service <独立服务名>
+# start | stop | status | restart
