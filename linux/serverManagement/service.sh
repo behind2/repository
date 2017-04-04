@@ -40,9 +40,10 @@ netstat -tlunp
 # RPM包安装在默认位置
 
 
-# RPM包服务管理【独立的服务启动】(绝对路径)
+# RPM包服务管理【独立的服务启动】(通过绝对路径启动)
 /etc/init.d/<独立服务名>
 # start | stop | status | restart
 
 service <独立服务名>
 # start | stop | status | restart
+
