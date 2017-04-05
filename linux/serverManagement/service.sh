@@ -47,3 +47,8 @@ netstat -tlunp
 service <独立服务名>
 # start | stop | status | restart
 
+
+# 独立服务的自启动
+chkconfig [--level 运行级别] [独立服务名] [on|off]
+# 修改/etc/rc.d/rc.local文件
+# 使用ntsysv命令管理自启动
