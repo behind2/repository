@@ -52,3 +52,15 @@ service <独立服务名>
 chkconfig [--level 运行级别] [独立服务名] [on|off]
 # 修改/etc/rc.d/rc.local文件
 # 使用ntsysv命令管理自启动
+
+
+
+# 基于xinetd服务的管理
+yum -y install xinetd
+
+vi /etc/xinetd.d/【下面所有的服务】
+service xinetd restart
+
+# 自启动管理
+chkconfig rsync on
+ntsysv
