@@ -64,3 +64,7 @@ service xinetd restart
 # 自启动管理
 chkconfig rsync on
 ntsysv
+
+
+# 源码包服务管理
+# 通过一定的操作, 其实是可以变成与rpm包管理一致的(方法)
