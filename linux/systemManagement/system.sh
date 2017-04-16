@@ -56,3 +56,7 @@ kill -l <pid>
 # 例如
 nice -n -5 service httpd start
 
+# renice [优先级] PID
+# renice命令是修改已经存在进程的NI值的命令
+# 例如
+# renice -10 2125
