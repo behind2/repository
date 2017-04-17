@@ -60,3 +60,7 @@ nice -n -5 service httpd start
 # renice命令是修改已经存在进程的NI值的命令
 # 例如
 # renice -10 2125
+
+
+# [linux]工作管理简介
+jobs
