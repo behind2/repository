@@ -127,3 +127,22 @@ lsb_release -a
 
 # 查看进程打开或使用的文件信息
 lsof [选项]
+
+
+
+# 系统定时任务
+# at一次执行
+# at服务是否安装
+chkconfig --list | grep atd
+
+# at服务的启动
+service atd restart
+
+# at [选项] 时间
+#
+# 查询当前服务器上的at工作
+# atq
+#
+# 删除指定的at任务
+# atrm [工作号]
+#
