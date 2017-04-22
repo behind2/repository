@@ -145,4 +145,16 @@ service atd restart
 #
 # 删除指定的at任务
 # atrm [工作号]
-#
+
+
+# crontab循环定时任务
+service crond restart
+chkconfig crond on
+
+# crontab [选项]
+# 选项
+# -e: 编辑crontab定时任务
+# -l: 查询crontab任务
+# -r: 删除当前用户所有的crontab任务
+
+
