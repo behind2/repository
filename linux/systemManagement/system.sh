@@ -158,3 +158,5 @@ chkconfig crond on
 # -r: 删除当前用户所有的crontab任务
 
 
+
+# 系统的crontab设置
