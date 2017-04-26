@@ -160,3 +160,6 @@ chkconfig crond on
 
 
 # 系统的crontab设置
+
+
+# anacron配置总结
