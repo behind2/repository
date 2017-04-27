@@ -12,3 +12,7 @@ limit
 
 index
 -- 索引离散程度更高德列放在前面
+
+-- 重复&冗余索引检测工具
+-- pt-duplicate-key-checker
+-- pt-index-usage工具检测查看索引的使用情况
