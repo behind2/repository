@@ -16,3 +16,12 @@ uname -n
 # 或者
 hostname
 
+# 显示内网ip
+hostname -I
+
+# 显示公网ip
+curl -s http://ipecho.net/plain
+
+# DNS
+cat /etc/resolv.conf | grep -E "\<nameserver[ ]+" | awk '{print ${NF}}'
+
