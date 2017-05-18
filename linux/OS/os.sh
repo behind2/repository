@@ -23,5 +23,5 @@ hostname -I
 curl -s http://ipecho.net/plain
 
 # DNS
-cat /etc/resolv.conf | grep -E "\<nameserver[ ]+" | awk '{print ${NF}}'
+cat /etc/resolv.conf | grep -E "\<nameserver[ ]+" | awk '{print $NF}'
 
