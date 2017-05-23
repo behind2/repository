@@ -25,3 +25,9 @@ curl -s http://ipecho.net/plain
 # DNS
 cat /etc/resolv.conf | grep -E "\<nameserver[ ]+" | awk '{print $NF}'
 
+# 是否有网络连通
+ping -c 2 imooc.com
+
+# 当前登录的用户数
+who
+
