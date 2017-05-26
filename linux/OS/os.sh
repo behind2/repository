@@ -31,3 +31,9 @@ ping -c 2 imooc.com
 # 当前登录的用户数
 who
 
+# 查看内存
+free -m
+
+# 操作系统内存相关的数据
+/proc/meminfo
+
