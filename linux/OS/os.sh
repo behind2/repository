@@ -41,3 +41,4 @@ free -m
 top [-] [d delay] [n number]
 
 # 磁盘使用量
+df -h
