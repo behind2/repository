@@ -37,3 +37,7 @@ free -m
 # 操作系统内存相关的数据
 /proc/meminfo
 
+# 操作系统的负载
+top [-] [d delay] [n number]
+
+# 磁盘使用量
