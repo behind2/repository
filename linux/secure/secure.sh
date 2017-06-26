@@ -20,3 +20,6 @@
 # -S 设置TCP模式SYN包
 # 二、伪造来源IP, 模拟Ddos攻击
 # -a 伪造IP地址
+
+# 路由扫描
+# traceroute、mtr
