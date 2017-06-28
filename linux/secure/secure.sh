@@ -13,7 +13,7 @@
 # 方式：fping -f filename
 
 
-# 主机扫描命令hping
+# 主机扫描命令fping/hping
 # 特点：支持使用TCP/IP数据包组装、分析工具
 # 一、对指定目标端口发起tcp探测
 # -p 端口
