@@ -16,11 +16,10 @@
 # 分隔符
 # options: -F field-separator(默认为空格)
 # ex: $ awk -F ':' '{print $3}' /etc/passwd
-
-# 脚本格式
-# $ awk -f awk-script-file files
-
-# 内置变量2
+# 内置变量
 # NR: 每行的记录号(行号)
 # NF: 字段数量变量(列号)
 # FILENAME: 正在处理的文件名
+
+# 脚本格式
+# $ awk -f awk-script-file files
