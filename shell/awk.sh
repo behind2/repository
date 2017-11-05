@@ -4,9 +4,12 @@
 # 命令行格式
 # $ awk [options] 'command' files
 #                  command: pattern {awk操作命令}
-#                           pattern: 正则表达式; 逻辑判断式
+#                           pattern: 正则表达式; 
+#                                    逻辑判断式, 如下: 
+#                                              ~, !~: 匹配正则表达式
+#                                              ==, !=, <, >: 判断逻辑表达式
 #   awk操作命令: 内置函数: print(), printf(), getline...
-#                控制指令: if () {...} else {...}, while () {...}
+#               控制指令: if () {...} else {...}, while () {...}
 
 # awk内置参数应用
 # 内置变量
