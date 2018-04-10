@@ -28,3 +28,6 @@ into table tbl_name
 [lines terminated by'n']
 [ignore number lines]
 [(col_name,   )]
+
+-- -–local-infile=1
+-- load data local infile '/tmp/behindli/sql.txt' ignore into table pilot_task_qid_src character set utf8 fields terminated by ', ' enclosed by "'" lines terminated by '\n' (`tid`,`ctime`,`ref`);
