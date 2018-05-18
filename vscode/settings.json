@@ -1,0 +1,18 @@
+{
+    "files.autoSave": "onFocusChange",
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace",
+    "editor.tabSize": 2,
+    "editor.renderWhitespace": "boundary",
+    "editor.wordWrap": "on",
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true
+    },
+    "files.autoGuessEncoding": true,
+    "workbench.colorTheme": "One Dark Pro Vivid",
+    "files.trimTrailingWhitespace": true
+}
